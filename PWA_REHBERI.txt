@@ -1,0 +1,334 @@
+===============================================================================
+                    PWA (Progressive Web App) UYGULAMA REHBERİ
+                              CineMAX Projesi İçin
+===============================================================================
+
+PWA, web uygulamanızı mobil uygulama gibi çalıştırmanızı sağlar:
+- Offline çalışma
+- Ana ekrana ekleme
+- Push bildirimleri
+- Daha hızlı yükleme
+
+===============================================================================
+ADIM 1: next-pwa Paketi Kurulumu
+===============================================================================
+
+Terminal'de çalıştırın:
+
+    npm install next-pwa
+
+===============================================================================
+ADIM 2: next.config.mjs Güncelleme
+===============================================================================
+
+Dosya: next.config.mjs
+
+Mevcut içeriği şununla değiştirin:
+
+---
+import withPWA from 'next-pwa';
+
+const pwaConfig = withPWA({
+  dest: 'public',
+  register: true,
+  skipWaiting: true,
+  disable: process.env.NODE_ENV === 'development',
+});
+
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'image.tmdb.org',
+        pathname: '/**',
+      },
+    ],
+  },
+};
+
+export default pwaConfig(nextConfig);
+---
+
+===============================================================================
+ADIM 3: Manifest Dosyası Oluşturma
+===============================================================================
+
+Dosya: public/manifest.json
+
+---
+{
+  "name": "CineMAX - Sinema Bilet Satış",
+  "short_name": "CineMAX",
+  "description": "En yeni filmler, en iyi deneyim. CineMAX ile sinema keyfini yaşayın.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0a0a",
+  "theme_color": "#e50914",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/icons/icon-72x72.png",
+      "sizes": "72x72",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/icons/icon-96x96.png",
+      "sizes": "96x96",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/icons/icon-128x128.png",
+      "sizes": "128x128",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/icons/icon-144x144.png",
+      "sizes": "144x144",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/icons/icon-152x152.png",
+      "sizes": "152x152",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/icons/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/icons/icon-384x384.png",
+      "sizes": "384x384",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/icons/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable any"
+    }
+  ],
+  "categories": ["entertainment", "lifestyle"],
+  "lang": "tr"
+}
+---
+
+===============================================================================
+ADIM 4: İkon Dosyaları Oluşturma
+===============================================================================
+
+public/icons/ klasörü oluşturun ve aşağıdaki boyutlarda ikonlar ekleyin:
+- icon-72x72.png
+- icon-96x96.png
+- icon-128x128.png
+- icon-144x144.png
+- icon-152x152.png
+- icon-192x192.png
+- icon-384x384.png
+- icon-512x512.png
+
+İkon oluşturmak için:
+1. 512x512 boyutunda bir logo tasarlayın
+2. https://www.pwabuilder.com/imageGenerator adresini kullanın
+3. veya Figma/Canva ile manuel oluşturun
+
+===============================================================================
+ADIM 5: Layout'a Meta Taglar Ekleme
+===============================================================================
+
+Dosya: src/app/layout.tsx
+
+metadata nesnesini güncelleyin:
+
+---
+export const metadata: Metadata = {
+  title: "CineMAX - Sinema Bilet Satış",
+  description: "En yeni filmler, en iyi deneyim. CineMAX ile sinema keyfini yaşayın.",
+  manifest: "/manifest.json",
+  themeColor: "#e50914",
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "black-translucent",
+    title: "CineMAX",
+  },
+  formatDetection: {
+    telephone: false,
+  },
+  openGraph: {
+    type: "website",
+    locale: "tr_TR",
+    url: "https://cinemax.com",
+    title: "CineMAX - Sinema Bilet Satış",
+    description: "En yeni filmler, en iyi deneyim.",
+    siteName: "CineMAX",
+  },
+};
+---
+
+===============================================================================
+ADIM 6: Service Worker Konfigürasyonu (Opsiyonel)
+===============================================================================
+
+next-pwa otomatik olarak service worker oluşturur.
+Özelleştirmek için:
+
+Dosya: worker/index.js
+
+---
+// Önbellek stratejisi
+self.addEventListener('fetch', (event) => {
+  event.respondWith(
+    caches.match(event.request).then((response) => {
+      return response || fetch(event.request);
+    })
+  );
+});
+
+// Push bildirimleri
+self.addEventListener('push', (event) => {
+  const data = event.data.json();
+  self.registration.showNotification(data.title, {
+    body: data.body,
+    icon: '/icons/icon-192x192.png',
+  });
+});
+---
+
+===============================================================================
+ADIM 7: Build ve Test
+===============================================================================
+
+1. Production build alın:
+   npm run build
+
+2. Production server başlatın:
+   npm start
+
+3. Chrome DevTools > Application > Service Workers kontrol edin
+
+4. Lighthouse PWA testini çalıştırın:
+   - DevTools > Lighthouse > PWA seçin
+   - Generate report
+
+===============================================================================
+ADIM 8: Offline Desteği
+===============================================================================
+
+Önbelleğe alınacak sayfaları belirleyin:
+
+next.config.mjs'e ekleyin:
+
+---
+const pwaConfig = withPWA({
+  dest: 'public',
+  register: true,
+  skipWaiting: true,
+  disable: process.env.NODE_ENV === 'development',
+  runtimeCaching: [
+    {
+      urlPattern: /^https:\/\/image\.tmdb\.org\/.*/i,
+      handler: 'CacheFirst',
+      options: {
+        cacheName: 'tmdb-images',
+        expiration: {
+          maxEntries: 100,
+          maxAgeSeconds: 60 * 60 * 24 * 30, // 30 gün
+        },
+      },
+    },
+  ],
+});
+---
+
+===============================================================================
+ADIM 9: Ana Ekrana Ekleme Prompt'u
+===============================================================================
+
+Dosya: src/components/InstallPrompt.tsx
+
+---
+'use client';
+
+import { useState, useEffect } from 'react';
+import { Download, X } from 'lucide-react';
+
+export default function InstallPrompt() {
+  const [deferredPrompt, setDeferredPrompt] = useState<any>(null);
+  const [showPrompt, setShowPrompt] = useState(false);
+
+  useEffect(() => {
+    const handler = (e: any) => {
+      e.preventDefault();
+      setDeferredPrompt(e);
+      setShowPrompt(true);
+    };
+
+    window.addEventListener('beforeinstallprompt', handler);
+    return () => window.removeEventListener('beforeinstallprompt', handler);
+  }, []);
+
+  const handleInstall = async () => {
+    if (!deferredPrompt) return;
+    deferredPrompt.prompt();
+    const { outcome } = await deferredPrompt.userChoice;
+    if (outcome === 'accepted') {
+      setShowPrompt(false);
+    }
+    setDeferredPrompt(null);
+  };
+
+  if (!showPrompt) return null;
+
+  return (
+    <div className="fixed bottom-20 left-4 right-4 bg-dark border border-gray-800 rounded-lg p-4 shadow-xl z-50">
+      <button
+        onClick={() => setShowPrompt(false)}
+        className="absolute top-2 right-2 text-gray-400"
+      >
+        <X className="w-4 h-4" />
+      </button>
+      <div className="flex items-center space-x-3">
+        <Download className="w-8 h-8 text-primary" />
+        <div className="flex-1">
+          <h3 className="text-white font-medium">CineMAX'ı Yükle</h3>
+          <p className="text-gray-400 text-sm">Hızlı erişim için ana ekrana ekle</p>
+        </div>
+        <button
+          onClick={handleInstall}
+          className="bg-primary text-white px-4 py-2 rounded-lg text-sm"
+        >
+          Yükle
+        </button>
+      </div>
+    </div>
+  );
+}
+---
+
+Bu bileşeni layout.tsx'e ekleyin.
+
+===============================================================================
+SONUÇ
+===============================================================================
+
+PWA aktif olduğunda:
+✓ Offline çalışma
+✓ Ana ekrana ekleme
+✓ Hızlı yükleme (önbellek)
+✓ Push bildirimleri (opsiyonel)
+✓ App-like deneyim
+
+Test için:
+- Chrome: chrome://flags/#enable-desktop-pwas
+- Mobile: Tarayıcıda "Ana Ekrana Ekle" seçeneği
+
+===============================================================================

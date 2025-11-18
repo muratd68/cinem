@@ -5,6 +5,10 @@ import Footer from "@/components/Footer";
 import { MovieProvider } from "@/context/MovieContext";
 import { LanguageProvider } from "@/context/LanguageContext";
 import { FavoritesProvider } from "@/context/FavoritesContext";
+import { ThemeProvider } from "@/context/ThemeContext";
+import { ToastProvider } from "@/context/ToastContext";
+import { TicketHistoryProvider } from "@/context/TicketHistoryContext";
+import { CouponProvider } from "@/context/CouponContext";
 
 export const metadata: Metadata = {
   title: "CineMAX - Sinema Bilet Satış",
@@ -19,17 +23,25 @@ export default function RootLayout({
   return (
     <html lang="tr">
       <body className="antialiased bg-darker min-h-screen">
-        <LanguageProvider>
-          <FavoritesProvider>
-            <MovieProvider>
-              <Navbar />
-              <main className="pt-16">
-                {children}
-              </main>
-              <Footer />
-            </MovieProvider>
-          </FavoritesProvider>
-        </LanguageProvider>
+        <ThemeProvider>
+          <LanguageProvider>
+            <ToastProvider>
+              <FavoritesProvider>
+                <TicketHistoryProvider>
+                  <CouponProvider>
+                    <MovieProvider>
+                      <Navbar />
+                      <main className="pt-16">
+                        {children}
+                      </main>
+                      <Footer />
+                    </MovieProvider>
+                  </CouponProvider>
+                </TicketHistoryProvider>
+              </FavoritesProvider>
+            </ToastProvider>
+          </LanguageProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

@@ -2,9 +2,11 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { Film, Menu, X, Search, Heart, Ticket, MapPin } from 'lucide-react';
+import { Film, Menu, X, Search, Heart, Ticket, MapPin, Sun, Moon } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
 import { useFavorites } from '@/context/FavoritesContext';
+import { useTheme } from '@/context/ThemeContext';
+import { useTicketHistory } from '@/context/TicketHistoryContext';
 import LanguageSwitch from './LanguageSwitch';
 
 export default function Navbar() {
@@ -12,6 +14,8 @@ export default function Navbar() {
   const [searchQuery, setSearchQuery] = useState('');
   const { t } = useLanguage();
   const { favorites } = useFavorites();
+  const { isDark, toggleTheme } = useTheme();
+  const { tickets } = useTicketHistory();
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-darker/95 backdrop-blur-md border-b border-gray-800">
@@ -72,8 +76,15 @@ export default function Navbar() {
           </div>
 
           {/* User Actions */}
-          <div className="hidden md:flex items-center space-x-3">
+          <div className="hidden md:flex items-center space-x-2">
             <LanguageSwitch />
+            <button
+              onClick={toggleTheme}
+              className="p-2 text-gray-300 hover:text-primary transition-colors"
+              title={isDark ? 'Light Mode' : 'Dark Mode'}
+            >
+              {isDark ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+            </button>
             <Link
               href="/favorites"
               className="p-2 text-gray-300 hover:text-primary transition-colors relative"
@@ -86,14 +97,22 @@ export default function Navbar() {
               )}
             </Link>
             <Link
+              href="/tickets"
+              className="p-2 text-gray-300 hover:text-primary transition-colors relative"
+            >
+              <Ticket className="w-5 h-5" />
+              {tickets.length > 0 && (
+                <span className="absolute -top-1 -right-1 bg-accent text-black text-xs w-4 h-4 rounded-full flex items-center justify-center">
+                  {tickets.length}
+                </span>
+              )}
+            </Link>
+            <Link
               href="/cinemas"
               className="p-2 text-gray-300 hover:text-primary transition-colors"
             >
               <MapPin className="w-5 h-5" />
             </Link>
-            <button className="p-2 text-gray-300 hover:text-primary transition-colors">
-              <Ticket className="w-5 h-5" />
-            </button>
           </div>
 
           {/* Mobile menu button */}
@@ -108,8 +127,14 @@ export default function Navbar() {
         {/* Mobile Navigation */}
         {isOpen && (
           <div className="md:hidden py-4 space-y-4 animate-fade-in">
-            <div className="flex justify-center mb-4">
+            <div className="flex justify-center items-center space-x-4 mb-4">
               <LanguageSwitch />
+              <button
+                onClick={toggleTheme}
+                className="p-2 text-gray-300 hover:text-primary transition-colors"
+              >
+                {isDark ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+              </button>
             </div>
             <div className="relative mb-4">
               <input
@@ -148,6 +173,13 @@ export default function Navbar() {
               className="block text-gray-300 hover:text-primary transition-colors font-medium py-2"
             >
               {t('favorites')} ({favorites.length})
+            </Link>
+            <Link
+              href="/tickets"
+              onClick={() => setIsOpen(false)}
+              className="block text-gray-300 hover:text-primary transition-colors font-medium py-2"
+            >
+              Biletlerim ({tickets.length})
             </Link>
             <Link
               href="/admin"
