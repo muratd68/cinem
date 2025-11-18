@@ -1,7 +1,7 @@
 import {
   Code, Database, BarChart3, Brain, Cpu, GitBranch,
   Terminal, FileCode, Calculator, Layers, Workflow, Table,
-  Container, Atom, Server
+  Container, Atom, Server, Ship, Cloud, Zap, FileJson, Palette
 } from 'lucide-react'
 
 export interface CheatSheet {
@@ -149,6 +149,60 @@ export const cheatsheets: CheatSheet[] = [
     href: '/django',
     color: 'bg-green-600',
     category: 'Web Development'
+  },
+  {
+    id: 'kubernetes',
+    title: 'Kubernetes',
+    description: 'kubectl komutlari, pods, deployments, services',
+    icon: Ship,
+    href: '/kubernetes',
+    color: 'bg-blue-600',
+    category: 'DevOps'
+  },
+  {
+    id: 'aws',
+    title: 'AWS',
+    description: 'S3, EC2, Lambda, IAM, RDS, DynamoDB',
+    icon: Cloud,
+    href: '/aws',
+    color: 'bg-orange-500',
+    category: 'Cloud'
+  },
+  {
+    id: 'fastapi',
+    title: 'FastAPI',
+    description: 'Routes, Pydantic, dependencies, middleware',
+    icon: Zap,
+    href: '/fastapi',
+    color: 'bg-teal-500',
+    category: 'Web Development'
+  },
+  {
+    id: 'javascript',
+    title: 'JavaScript',
+    description: 'ES6+, async/await, DOM, array methods',
+    icon: FileJson,
+    href: '/javascript',
+    color: 'bg-yellow-500',
+    category: 'Programlama'
+  },
+  {
+    id: 'mongodb',
+    title: 'MongoDB',
+    description: 'CRUD, aggregation, indexler, query operators',
+    icon: Database,
+    href: '/mongodb',
+    color: 'bg-green-500',
+    category: 'Veritabani'
+  },
+  {
+    id: 'css',
+    title: 'CSS/Tailwind',
+    description: 'Flexbox, grid, responsive, animations',
+    icon: Palette,
+    href: '/css',
+    color: 'bg-blue-400',
+    category: 'Web Development'
   }
 ]
 
@@ -161,5 +215,6 @@ export const categories = [
   'Veritabani',
   'Gorsellestirme',
   'DevOps',
+  'Cloud',
   'Web Development'
 ]
