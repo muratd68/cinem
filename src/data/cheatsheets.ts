@@ -1,6 +1,7 @@
 import {
   Code, Database, BarChart3, Brain, Cpu, GitBranch,
-  Terminal, FileCode, Calculator, Layers, Workflow, Table
+  Terminal, FileCode, Calculator, Layers, Workflow, Table,
+  Container, Atom, Server
 } from 'lucide-react'
 
 export interface CheatSheet {
@@ -121,6 +122,33 @@ export const cheatsheets: CheatSheet[] = [
     href: '/statistics',
     color: 'bg-indigo-500',
     category: 'Data Science'
+  },
+  {
+    id: 'docker',
+    title: 'Docker',
+    description: 'Container, image yonetimi, Dockerfile, docker-compose',
+    icon: Container,
+    href: '/docker',
+    color: 'bg-blue-600',
+    category: 'DevOps'
+  },
+  {
+    id: 'react',
+    title: 'React',
+    description: 'Components, hooks, state management, event handling',
+    icon: Atom,
+    href: '/react',
+    color: 'bg-cyan-500',
+    category: 'Web Development'
+  },
+  {
+    id: 'django',
+    title: 'Django',
+    description: 'Models, views, templates, forms, ORM',
+    icon: Server,
+    href: '/django',
+    color: 'bg-green-600',
+    category: 'Web Development'
   }
 ]
 
@@ -132,5 +160,6 @@ export const categories = [
   'Deep Learning',
   'Veritabani',
   'Gorsellestirme',
-  'DevOps'
+  'DevOps',
+  'Web Development'
 ]
