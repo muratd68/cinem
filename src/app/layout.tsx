@@ -3,6 +3,8 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { MovieProvider } from "@/context/MovieContext";
+import { LanguageProvider } from "@/context/LanguageContext";
+import { FavoritesProvider } from "@/context/FavoritesContext";
 
 export const metadata: Metadata = {
   title: "CineMAX - Sinema Bilet Satış",
@@ -17,13 +19,17 @@ export default function RootLayout({
   return (
     <html lang="tr">
       <body className="antialiased bg-darker min-h-screen">
-        <MovieProvider>
-          <Navbar />
-          <main className="pt-16">
-            {children}
-          </main>
-          <Footer />
-        </MovieProvider>
+        <LanguageProvider>
+          <FavoritesProvider>
+            <MovieProvider>
+              <Navbar />
+              <main className="pt-16">
+                {children}
+              </main>
+              <Footer />
+            </MovieProvider>
+          </FavoritesProvider>
+        </LanguageProvider>
       </body>
     </html>
   );
