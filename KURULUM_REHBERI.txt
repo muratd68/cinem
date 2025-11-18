@@ -1,0 +1,325 @@
+===============================================================================
+                    CineMAX - LOCAL KURULUM VE ÇALIŞTIRMA REHBERİ
+===============================================================================
+
+Bu rehber, CineMAX projesini kendi bilgisayarınızda çalıştırmanız için
+gerekli tüm adımları içermektedir.
+
+===============================================================================
+1. GEREKSİNİMLER
+===============================================================================
+
+Projeyi çalıştırmak için aşağıdaki yazılımların kurulu olması gerekir:
+
+1.1 Node.js (v18 veya üzeri)
+----------------------------
+İndirme: https://nodejs.org/
+
+Kurulu mu kontrol et:
+    node --version
+
+Çıktı: v18.x.x veya v20.x.x olmalı
+
+1.2 npm (Node.js ile birlikte gelir)
+------------------------------------
+Kurulu mu kontrol et:
+    npm --version
+
+Çıktı: 9.x.x veya 10.x.x olmalı
+
+1.3 Git (Opsiyonel - projeyi klonlamak için)
+--------------------------------------------
+İndirme: https://git-scm.com/
+
+===============================================================================
+2. PROJEYİ ALMA
+===============================================================================
+
+2.1 Git ile Klonlama (Önerilen)
+-------------------------------
+Terminal/CMD açın ve şu komutu çalıştırın:
+
+    git clone <repository-url> cinemax
+    cd cinemax
+
+2.2 ZIP Olarak İndirme
+----------------------
+1. Repository sayfasından "Download ZIP" seçin
+2. ZIP'i açın
+3. Klasöre girin
+
+===============================================================================
+3. BAĞIMLILIKLARI KURMA
+===============================================================================
+
+Proje klasöründe terminal açın ve çalıştırın:
+
+    npm install
+
+Bu komut:
+- package.json'daki tüm bağımlılıkları indirir
+- node_modules klasörü oluşturur
+- package-lock.json günceller
+
+Kurulum süresi: 1-3 dakika (internet hızına bağlı)
+
+Başarılı çıktı örneği:
+    added 376 packages in 30s
+
+===============================================================================
+4. GELİŞTİRME SUNUCUSUNU BAŞLATMA
+===============================================================================
+
+Bağımlılıklar kurulduktan sonra:
+
+    npm run dev
+
+Çıktı:
+    ▲ Next.js 14.2.x
+    - Local:        http://localhost:3000
+    - Ready in 2.5s
+
+Tarayıcınızda açın:
+    http://localhost:3000
+
+===============================================================================
+5. DİĞER KOMUTLAR
+===============================================================================
+
+5.1 Production Build Alma
+-------------------------
+    npm run build
+
+Bu komut:
+- Kodu optimize eder
+- Statik sayfaları oluşturur
+- .next klasörüne çıktı verir
+
+5.2 Production Sunucusu Başlatma
+--------------------------------
+Önce build alın, sonra:
+
+    npm start
+
+5.3 Lint Kontrolü
+-----------------
+    npm run lint
+
+Kod kalitesi ve hata kontrolü yapar.
+
+===============================================================================
+6. PROJE YAPISI
+===============================================================================
+
+Önemli dosya ve klasörler:
+
+cinemax/
+├── src/
+│   ├── app/           # Sayfalar
+│   ├── components/    # Bileşenler
+│   ├── context/       # State yönetimi
+│   ├── data/          # Mock veriler
+│   └── utils/         # Yardımcı fonksiyonlar
+├── public/            # Statik dosyalar
+├── package.json       # Bağımlılıklar
+└── README.md          # Dokümantasyon
+
+===============================================================================
+7. SAYFA ROTALARI
+===============================================================================
+
+Proje çalıştıktan sonra bu sayfalara erişebilirsiniz:
+
+| URL                  | Sayfa              |
+|----------------------|--------------------|
+| /                    | Ana Sayfa          |
+| /movies              | Filmler            |
+| /movie/1             | Film Detay         |
+| /seats/1             | Koltuk Seçimi      |
+| /payment             | Ödeme              |
+| /admin               | Admin Paneli       |
+| /cinemas             | Sinema Bulucu      |
+| /favorites           | Favoriler          |
+| /tickets             | Bilet Geçmişi      |
+
+===============================================================================
+8. ÖZELLİKLERİ TEST ETME
+===============================================================================
+
+8.1 Film Satın Alma Akışı
+-------------------------
+1. Ana sayfada bir filme tıklayın
+2. Film detayında seans seçin
+3. "Bilet Al" butonuna tıklayın
+4. Koltuk seçin
+5. "Ödemeye Geç" butonuna tıklayın
+6. Form bilgilerini doldurun:
+   - Kart: 1234 5678 9012 3456
+   - İsim: TEST USER
+   - SKT: 12/25
+   - CVV: 123
+   - Email: test@test.com
+   - Telefon: 5551234567
+7. Ödemeyi tamamlayın
+8. QR kodlu biletinizi görün
+
+8.2 Kupon Kodları
+-----------------
+Ödeme sayfasında bu kuponları deneyebilirsiniz:
+- HOSGELDIN: %20 indirim
+- SINEMA10: %10 indirim
+- VIP25: %25 indirim (min 200 TL)
+- OGRENCI15: %15 indirim
+
+8.3 Dil Değiştirme
+------------------
+Navbar'da TR/EN butonlarına tıklayın.
+
+8.4 Tema Değiştirme
+-------------------
+Navbar'da güneş/ay ikonuna tıklayın.
+
+8.5 Konum Bulma
+---------------
+/cinemas sayfasında "Konumumu Bul" butonuna tıklayın.
+(Tarayıcı konum izni isteyecektir)
+
+===============================================================================
+9. SORUN GİDERME
+===============================================================================
+
+9.1 "npm install" Hata Veriyor
+------------------------------
+Çözüm 1: npm cache temizle
+    npm cache clean --force
+    npm install
+
+Çözüm 2: node_modules sil ve yeniden kur
+    rm -rf node_modules
+    rm package-lock.json
+    npm install
+
+9.2 Port 3000 Kullanımda
+------------------------
+Başka bir portta çalıştır:
+    npm run dev -- -p 3001
+
+veya kullanılan portu bul ve kapat:
+    # Windows
+    netstat -ano | findstr :3000
+    taskkill /PID <PID> /F
+
+    # Mac/Linux
+    lsof -i :3000
+    kill -9 <PID>
+
+9.3 "Module not found" Hatası
+-----------------------------
+Bağımlılıkları yeniden kur:
+    npm install
+
+9.4 Sayfa Yüklenmiyor / Beyaz Ekran
+-----------------------------------
+1. Tarayıcı console'u kontrol et (F12)
+2. Terminal'deki hata mesajlarını oku
+3. npm run dev'i yeniden başlat
+
+9.5 Görseller Yüklenmiyor
+-------------------------
+Görseller TMDB'den çekiliyor. İnternet bağlantınızı kontrol edin.
+
+===============================================================================
+10. GELİŞTİRME İPUÇLARI
+===============================================================================
+
+10.1 Hot Reload
+---------------
+Kod değişiklikleri otomatik olarak tarayıcıya yansır.
+Sayfayı manuel yenilemenize gerek yok.
+
+10.2 Console Kullanımı
+----------------------
+Tarayıcıda F12 ile DevTools açın.
+- Console: Hata mesajları
+- Network: API çağrıları
+- Application: LocalStorage verileri
+
+10.3 VS Code Eklentileri (Önerilen)
+-----------------------------------
+- ES7+ React/Redux/React-Native snippets
+- Tailwind CSS IntelliSense
+- TypeScript Vue Plugin (Volar)
+- Prettier - Code formatter
+
+===============================================================================
+11. PRODUCTION DEPLOY
+===============================================================================
+
+11.1 Vercel (Önerilen)
+----------------------
+1. https://vercel.com adresine gidin
+2. GitHub ile giriş yapın
+3. "Import Project" seçin
+4. Repository'yi seçin
+5. "Deploy" butonuna tıklayın
+
+11.2 Netlify
+------------
+1. npm run build
+2. .next klasörünü Netlify'a yükleyin
+
+11.3 Docker
+-----------
+Dockerfile oluşturun:
+
+    FROM node:18-alpine
+    WORKDIR /app
+    COPY package*.json ./
+    RUN npm install
+    COPY . .
+    RUN npm run build
+    EXPOSE 3000
+    CMD ["npm", "start"]
+
+Build ve çalıştır:
+    docker build -t cinemax .
+    docker run -p 3000:3000 cinemax
+
+===============================================================================
+12. FAYDALI LİNKLER
+===============================================================================
+
+Next.js Dokümantasyonu:
+https://nextjs.org/docs
+
+Tailwind CSS Dokümantasyonu:
+https://tailwindcss.com/docs
+
+TypeScript Dokümantasyonu:
+https://www.typescriptlang.org/docs
+
+Lucide Icons:
+https://lucide.dev/icons
+
+===============================================================================
+13. ÖZET - HIZLI BAŞLANGIÇ
+===============================================================================
+
+# 1. Node.js kur (https://nodejs.org)
+
+# 2. Projeyi al
+git clone <repo-url> cinemax
+cd cinemax
+
+# 3. Bağımlılıkları kur
+npm install
+
+# 4. Çalıştır
+npm run dev
+
+# 5. Tarayıcıda aç
+http://localhost:3000
+
+===============================================================================
+                              İYİ ÇALIŞMALAR!
+===============================================================================
