@@ -1,68 +1,51 @@
-'use client';
+'use client'
 
-import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+import { createContext, useContext, useState, useEffect, ReactNode } from 'react'
 
 interface FavoritesContextType {
-  favorites: string[];
-  addFavorite: (movieId: string) => void;
-  removeFavorite: (movieId: string) => void;
-  isFavorite: (movieId: string) => boolean;
-  toggleFavorite: (movieId: string) => void;
+  favorites: string[]
+  addFavorite: (id: string) => void
+  removeFavorite: (id: string) => void
+  isFavorite: (id: string) => boolean
 }
 
-const FavoritesContext = createContext<FavoritesContextType | undefined>(undefined);
+const FavoritesContext = createContext<FavoritesContextType | undefined>(undefined)
 
 export function FavoritesProvider({ children }: { children: ReactNode }) {
-  const [favorites, setFavorites] = useState<string[]>([]);
+  const [favorites, setFavorites] = useState<string[]>([])
 
   useEffect(() => {
-    const saved = localStorage.getItem('favorites');
+    const saved = localStorage.getItem('cheatsheet-favorites')
     if (saved) {
-      try {
-        setFavorites(JSON.parse(saved));
-      } catch {
-        setFavorites([]);
-      }
+      setFavorites(JSON.parse(saved))
     }
-  }, []);
+  }, [])
 
   useEffect(() => {
-    localStorage.setItem('favorites', JSON.stringify(favorites));
-  }, [favorites]);
+    localStorage.setItem('cheatsheet-favorites', JSON.stringify(favorites))
+  }, [favorites])
 
-  const addFavorite = (movieId: string) => {
-    setFavorites((prev) => [...prev, movieId]);
-  };
+  const addFavorite = (id: string) => {
+    setFavorites(prev => [...prev, id])
+  }
 
-  const removeFavorite = (movieId: string) => {
-    setFavorites((prev) => prev.filter((id) => id !== movieId));
-  };
+  const removeFavorite = (id: string) => {
+    setFavorites(prev => prev.filter(f => f !== id))
+  }
 
-  const isFavorite = (movieId: string) => {
-    return favorites.includes(movieId);
-  };
-
-  const toggleFavorite = (movieId: string) => {
-    if (isFavorite(movieId)) {
-      removeFavorite(movieId);
-    } else {
-      addFavorite(movieId);
-    }
-  };
+  const isFavorite = (id: string) => favorites.includes(id)
 
   return (
-    <FavoritesContext.Provider
-      value={{ favorites, addFavorite, removeFavorite, isFavorite, toggleFavorite }}
-    >
+    <FavoritesContext.Provider value={{ favorites, addFavorite, removeFavorite, isFavorite }}>
       {children}
     </FavoritesContext.Provider>
-  );
+  )
 }
 
 export function useFavorites() {
-  const context = useContext(FavoritesContext);
-  if (context === undefined) {
-    throw new Error('useFavorites must be used within a FavoritesProvider');
+  const context = useContext(FavoritesContext)
+  if (!context) {
+    throw new Error('useFavorites must be used within a FavoritesProvider')
   }
-  return context;
+  return context
 }
