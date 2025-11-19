@@ -1,10 +1,12 @@
 'use client'
 
 import Link from 'next/link'
+import { memo } from 'react'
 import { Heart } from 'lucide-react'
 import { useTheme } from '@/context/ThemeContext'
 import { useFavorites } from '@/context/FavoritesContext'
 import { useToast } from '@/context/ToastContext'
+import { useLanguage } from '@/context/LanguageContext'
 import { LucideIcon } from 'lucide-react'
 
 interface CheatCardProps {
@@ -16,19 +18,20 @@ interface CheatCardProps {
   color: string
 }
 
-export default function CheatCard({ id, title, description, icon: Icon, href, color }: CheatCardProps) {
+function CheatCard({ id, title, description, icon: Icon, href, color }: CheatCardProps) {
   const { isDark } = useTheme()
   const { isFavorite, addFavorite, removeFavorite } = useFavorites()
   const { showToast } = useToast()
+  const { t } = useLanguage()
 
   const handleFavorite = (e: React.MouseEvent) => {
     e.preventDefault()
     if (isFavorite(id)) {
       removeFavorite(id)
-      showToast('Favorilerden cikarildi', 'info')
+      showToast(t('favorites.removed'), 'info')
     } else {
       addFavorite(id)
-      showToast('Favorilere eklendi', 'success')
+      showToast(t('favorites.added'), 'success')
     }
   }
 
@@ -62,3 +65,5 @@ export default function CheatCard({ id, title, description, icon: Icon, href, co
     </Link>
   )
 }
+
+export default memo(CheatCard)

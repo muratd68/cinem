@@ -4,11 +4,13 @@ import Link from 'next/link'
 import { useState } from 'react'
 import { useTheme } from '@/context/ThemeContext'
 import { useFavorites } from '@/context/FavoritesContext'
-import { Sun, Moon, Heart, Menu, X, Code2, Search } from 'lucide-react'
+import { useLanguage } from '@/context/LanguageContext'
+import { Sun, Moon, Heart, Menu, X, Code2, Search, Globe } from 'lucide-react'
 
 export default function Navbar() {
   const { isDark, toggleTheme } = useTheme()
   const { favorites } = useFavorites()
+  const { locale, setLocale, t } = useLanguage()
   const [isOpen, setIsOpen] = useState(false)
   const [searchQuery, setSearchQuery] = useState('')
 
@@ -35,7 +37,7 @@ export default function Navbar() {
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
               <input
                 type="text"
-                placeholder="Cheat sheet ara..."
+                placeholder={t('common.search')}
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className={`w-full pl-10 pr-4 py-2 rounded-lg ${
@@ -61,6 +63,14 @@ export default function Navbar() {
               )}
             </Link>
             <button
+              onClick={() => setLocale(locale === 'tr' ? 'en' : 'tr')}
+              className={`p-2 rounded-lg flex items-center gap-1 ${isDark ? 'hover:bg-gray-800' : 'hover:bg-gray-100'}`}
+              title={locale === 'tr' ? 'Switch to English' : 'Turkceye Gec'}
+            >
+              <Globe className="w-5 h-5" />
+              <span className="text-xs font-medium">{locale.toUpperCase()}</span>
+            </button>
+            <button
               onClick={toggleTheme}
               className={`p-2 rounded-lg ${isDark ? 'hover:bg-gray-800' : 'hover:bg-gray-100'}`}
             >
@@ -85,7 +95,7 @@ export default function Navbar() {
                 <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
                 <input
                   type="text"
-                  placeholder="Cheat sheet ara..."
+                  placeholder={t('common.search')}
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   className={`w-full pl-10 pr-4 py-2 rounded-lg ${
@@ -96,14 +106,21 @@ export default function Navbar() {
                 />
               </div>
             </form>
-            <div className="flex items-center justify-between">
+            <div className="flex flex-col gap-3">
               <Link href="/favorites" className="flex items-center gap-2" onClick={() => setIsOpen(false)}>
                 <Heart className="w-5 h-5" />
-                <span>Favoriler ({favorites.length})</span>
+                <span>{t('common.favorites')} ({favorites.length})</span>
               </Link>
+              <button
+                onClick={() => setLocale(locale === 'tr' ? 'en' : 'tr')}
+                className="flex items-center gap-2"
+              >
+                <Globe className="w-5 h-5" />
+                <span>{locale === 'tr' ? 'English' : 'Turkce'}</span>
+              </button>
               <button onClick={toggleTheme} className="flex items-center gap-2">
                 {isDark ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
-                <span>{isDark ? 'Light Mode' : 'Dark Mode'}</span>
+                <span>{isDark ? t('common.lightMode') : t('common.darkMode')}</span>
               </button>
             </div>
           </div>

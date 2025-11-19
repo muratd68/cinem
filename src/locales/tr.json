@@ -1,0 +1,95 @@
+{
+  "common": {
+    "search": "Cheat sheet ara...",
+    "favorites": "Favoriler",
+    "darkMode": "Koyu Tema",
+    "lightMode": "Acik Tema",
+    "quiz": "Quiz",
+    "back": "Geri",
+    "copy": "Kopyala",
+    "copied": "Kod kopyalandi!",
+    "download": "Indir",
+    "cancel": "Iptal",
+    "preparing": "Hazirlaniyor...",
+    "all": "Tumu"
+  },
+  "home": {
+    "title": "DevCheatSheet",
+    "subtitle": "Data Scientists ve Developers icin hizli referans.",
+    "description": "Python, SQL, Machine Learning ve daha fazlasi tek yerde.",
+    "stats": {
+      "sheets": "Cheat Sheet",
+      "examples": "Kod Ornegi",
+      "free": "Ucretsiz"
+    },
+    "noResults": "Aramanizla eslesen cheat sheet bulunamadi.",
+    "whyUs": "Neden DevCheatSheet?",
+    "features": {
+      "quickAccess": {
+        "title": "Hizli Erisim",
+        "description": "Tek tikla kopyala, hemen kullan"
+      },
+      "favorites": {
+        "title": "Favoriler",
+        "description": "En cok kullandiklarini kaydet"
+      },
+      "community": {
+        "title": "Topluluk",
+        "description": "Surekli guncellenen icerik"
+      }
+    }
+  },
+  "navbar": {
+    "home": "Ana Sayfa"
+  },
+  "footer": {
+    "tagline": "Data Scientists & Developers icin hizli referans",
+    "rights": "Tum haklar saklidir."
+  },
+  "favorites": {
+    "title": "Favori Cheat Sheet'lerim",
+    "empty": "Henuz favori eklenmedi.",
+    "emptyDescription": "Cheat sheet'leri favorilere eklemek icin yildiz ikonuna tiklayin.",
+    "added": "Favorilere eklendi",
+    "removed": "Favorilerden cikarildi"
+  },
+  "pdf": {
+    "title": "PDF Indirme",
+    "adSpace": "Reklam Alani",
+    "preparing": "PDF dosyaniz hazirlaniyor. Indirmeye devam etmek icin..."
+  },
+  "quiz": {
+    "title": "Quiz",
+    "selectTopic": "Konu Sec",
+    "start": "Baslat",
+    "question": "Soru",
+    "of": "/",
+    "next": "Sonraki",
+    "finish": "Bitir",
+    "results": "Sonuclar",
+    "score": "Puan",
+    "correct": "Dogru",
+    "wrong": "Yanlis",
+    "tryAgain": "Tekrar Dene",
+    "explanation": "Aciklama",
+    "bestScore": "En Iyi Skor",
+    "noQuiz": "Bu konu icin quiz bulunamadi."
+  },
+  "categories": {
+    "all": "Tumu",
+    "programming": "Programlama",
+    "dataScience": "Data Science",
+    "machineLearning": "Machine Learning",
+    "deepLearning": "Deep Learning",
+    "database": "Veritabani",
+    "visualization": "Gorsellestirme",
+    "devops": "DevOps",
+    "cloud": "Cloud",
+    "webDev": "Web Development",
+    "security": "Security"
+  },
+  "metadata": {
+    "title": "DevCheatSheet - Python, SQL, ML Kopya Kagitlari",
+    "description": "Data Scientists ve Developers icin hizli referans. Python, Pandas, NumPy, SQL, TensorFlow, PyTorch ve daha fazlasi."
+  }
+}

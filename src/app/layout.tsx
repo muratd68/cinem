@@ -5,6 +5,7 @@ import { FavoritesProvider } from '@/context/FavoritesContext'
 import { ToastProvider } from '@/context/ToastContext'
 import { SearchProvider } from '@/context/SearchContext'
 import { QuizProvider } from '@/context/QuizContext'
+import { LanguageProvider } from '@/context/LanguageContext'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 
@@ -34,19 +35,21 @@ export default function RootLayout({
       </head>
       <body>
         <ThemeProvider>
-          <ToastProvider>
-            <SearchProvider>
-              <QuizProvider>
-                <FavoritesProvider>
-                  <Navbar />
-                  <main className="min-h-screen">
-                    {children}
-                  </main>
-                  <Footer />
-                </FavoritesProvider>
-              </QuizProvider>
-            </SearchProvider>
-          </ToastProvider>
+          <LanguageProvider>
+            <ToastProvider>
+              <SearchProvider>
+                <QuizProvider>
+                  <FavoritesProvider>
+                    <Navbar />
+                    <main className="min-h-screen">
+                      {children}
+                    </main>
+                    <Footer />
+                  </FavoritesProvider>
+                </QuizProvider>
+              </SearchProvider>
+            </ToastProvider>
+          </LanguageProvider>
         </ThemeProvider>
       </body>
     </html>

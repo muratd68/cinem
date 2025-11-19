@@ -1,0 +1,95 @@
+{
+  "common": {
+    "search": "Search cheat sheet...",
+    "favorites": "Favorites",
+    "darkMode": "Dark Mode",
+    "lightMode": "Light Mode",
+    "quiz": "Quiz",
+    "back": "Back",
+    "copy": "Copy",
+    "copied": "Code copied!",
+    "download": "Download",
+    "cancel": "Cancel",
+    "preparing": "Preparing...",
+    "all": "All"
+  },
+  "home": {
+    "title": "DevCheatSheet",
+    "subtitle": "Quick reference for Data Scientists and Developers.",
+    "description": "Python, SQL, Machine Learning and more in one place.",
+    "stats": {
+      "sheets": "Cheat Sheets",
+      "examples": "Code Examples",
+      "free": "Free"
+    },
+    "noResults": "No cheat sheets found matching your search.",
+    "whyUs": "Why DevCheatSheet?",
+    "features": {
+      "quickAccess": {
+        "title": "Quick Access",
+        "description": "One click to copy, use immediately"
+      },
+      "favorites": {
+        "title": "Favorites",
+        "description": "Save your most used sheets"
+      },
+      "community": {
+        "title": "Community",
+        "description": "Constantly updated content"
+      }
+    }
+  },
+  "navbar": {
+    "home": "Home"
+  },
+  "footer": {
+    "tagline": "Quick reference for Data Scientists & Developers",
+    "rights": "All rights reserved."
+  },
+  "favorites": {
+    "title": "My Favorite Cheat Sheets",
+    "empty": "No favorites added yet.",
+    "emptyDescription": "Click the star icon on cheat sheets to add them to favorites.",
+    "added": "Added to favorites",
+    "removed": "Removed from favorites"
+  },
+  "pdf": {
+    "title": "PDF Download",
+    "adSpace": "Ad Space",
+    "preparing": "Your PDF is being prepared. To continue downloading..."
+  },
+  "quiz": {
+    "title": "Quiz",
+    "selectTopic": "Select Topic",
+    "start": "Start",
+    "question": "Question",
+    "of": "/",
+    "next": "Next",
+    "finish": "Finish",
+    "results": "Results",
+    "score": "Score",
+    "correct": "Correct",
+    "wrong": "Wrong",
+    "tryAgain": "Try Again",
+    "explanation": "Explanation",
+    "bestScore": "Best Score",
+    "noQuiz": "No quiz found for this topic."
+  },
+  "categories": {
+    "all": "All",
+    "programming": "Programming",
+    "dataScience": "Data Science",
+    "machineLearning": "Machine Learning",
+    "deepLearning": "Deep Learning",
+    "database": "Database",
+    "visualization": "Visualization",
+    "devops": "DevOps",
+    "cloud": "Cloud",
+    "webDev": "Web Development",
+    "security": "Security"
+  },
+  "metadata": {
+    "title": "DevCheatSheet - Python, SQL, ML Cheat Sheets",
+    "description": "Quick reference for Data Scientists and Developers. Python, Pandas, NumPy, SQL, TensorFlow, PyTorch and more."
+  }
+}
