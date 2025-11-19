@@ -1,9 +1,10 @@
 'use client'
 
 import { useState } from 'react'
-import { Mail, Send } from 'lucide-react'
 import { useTheme } from '@/context/ThemeContext'
 import { useToast } from '@/context/ToastContext'
+import { InputText } from 'primereact/inputtext'
+import { Button } from 'primereact/button'
 
 export default function Newsletter() {
   const [email, setEmail] = useState('')
@@ -30,42 +31,54 @@ export default function Newsletter() {
   }
 
   return (
-    <div className={`rounded-xl p-6 ${isDark ? 'bg-gray-800/50' : 'bg-gray-100'}`}>
-      <div className="flex items-center gap-3 mb-4">
-        <div className="p-2 rounded-lg bg-primary/20">
-          <Mail className="w-5 h-5 text-primary" />
+    <div
+      className="border-round-xl p-4"
+      style={{
+        backgroundColor: isDark ? 'rgba(31, 41, 55, 0.5)' : '#f3f4f6'
+      }}
+    >
+      <div className="flex align-items-center gap-3 mb-4">
+        <div
+          className="flex align-items-center justify-content-center border-round-lg"
+          style={{
+            width: '40px',
+            height: '40px',
+            backgroundColor: 'rgba(99, 102, 241, 0.2)'
+          }}
+        >
+          <i className="pi pi-envelope" style={{ color: '#6366f1' }}></i>
         </div>
         <div>
-          <h3 className="font-semibold">Newsletter</h3>
-          <p className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
+          <h3 className="font-semibold m-0">Newsletter</h3>
+          <p
+            className="text-sm m-0"
+            style={{ color: isDark ? '#9ca3af' : '#4b5563' }}
+          >
             Yeni cheat sheet'lerden haberdar olun
           </p>
         </div>
       </div>
 
       <form onSubmit={handleSubmit} className="flex gap-2">
-        <input
+        <InputText
           type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           placeholder="email@ornek.com"
-          className={`flex-1 px-3 py-2 rounded-lg text-sm ${
-            isDark
-              ? 'bg-gray-700 text-white placeholder-gray-400 border-gray-600'
-              : 'bg-white text-gray-900 placeholder-gray-500 border-gray-200'
-          } border focus:outline-none focus:border-primary`}
+          className="flex-1"
+          style={{
+            backgroundColor: isDark ? '#374151' : '#fff',
+            borderColor: isDark ? '#4b5563' : '#e5e7eb',
+            color: isDark ? '#fff' : '#1f2937',
+            fontSize: '0.875rem'
+          }}
         />
-        <button
+        <Button
           type="submit"
+          icon={isLoading ? 'pi pi-spin pi-spinner' : 'pi pi-send'}
           disabled={isLoading}
-          className="px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 disabled:opacity-50"
-        >
-          {isLoading ? (
-            <span className="animate-spin">...</span>
-          ) : (
-            <Send className="w-4 h-4" />
-          )}
-        </button>
+          className="btn-primary"
+        />
       </form>
     </div>
   )

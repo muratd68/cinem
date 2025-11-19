@@ -6,7 +6,8 @@ import { useTheme } from '@/context/ThemeContext'
 import { useLanguage } from '@/context/LanguageContext'
 import CheatCard from '@/components/CheatCard'
 import { cheatsheets, categories } from '@/data/cheatsheets'
-import { Code2, Download, Star, Users } from 'lucide-react'
+import { Button } from 'primereact/button'
+import { ProgressSpinner } from 'primereact/progressspinner'
 
 function HomeContent() {
   const { isDark } = useTheme()
@@ -42,56 +43,68 @@ function HomeContent() {
   }, [searchParams, selectedCategory, t])
 
   return (
-    <div className="max-w-7xl mx-auto px-4 py-8">
+    <div className="px-4 py-5" style={{ maxWidth: '1280px', margin: '0 auto' }}>
       {/* Hero Section */}
-      <section className="text-center py-12">
-        <div className="flex justify-center mb-6">
-          <div className="p-4 rounded-2xl bg-gradient-to-br from-primary to-secondary">
-            <Code2 className="w-12 h-12 text-white" />
+      <section className="text-center py-6">
+        <div className="flex justify-content-center mb-4">
+          <div
+            className="flex align-items-center justify-content-center border-round-xl"
+            style={{
+              width: '64px',
+              height: '64px',
+              background: 'linear-gradient(135deg, #6366f1, #8b5cf6)'
+            }}
+          >
+            <i className="pi pi-code" style={{ fontSize: '2rem', color: '#fff' }}></i>
           </div>
         </div>
-        <h1 className="text-4xl md:text-5xl font-bold mb-4">
+        <h1 className="text-4xl md:text-5xl font-bold mb-3">
           <span className="gradient-text">{t('home.title')}</span>
         </h1>
-        <p className={`text-xl ${isDark ? 'text-gray-400' : 'text-gray-600'} max-w-2xl mx-auto`}>
+        <p
+          className="text-xl mx-auto"
+          style={{
+            color: isDark ? '#9ca3af' : '#4b5563',
+            maxWidth: '672px'
+          }}
+        >
           {t('home.subtitle')}
           {' '}{t('home.description')}
         </p>
 
         {/* Stats */}
-        <div className="flex justify-center gap-8 mt-8">
+        <div className="flex justify-content-center gap-5 mt-5">
           <div className="text-center">
-            <div className="text-2xl font-bold text-primary">52+</div>
-            <div className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>{t('home.stats.sheets')}</div>
+            <div className="text-2xl font-bold" style={{ color: '#6366f1' }}>52+</div>
+            <div className="text-sm" style={{ color: isDark ? '#9ca3af' : '#4b5563' }}>{t('home.stats.sheets')}</div>
           </div>
           <div className="text-center">
-            <div className="text-2xl font-bold text-primary">500+</div>
-            <div className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>{t('home.stats.examples')}</div>
+            <div className="text-2xl font-bold" style={{ color: '#6366f1' }}>500+</div>
+            <div className="text-sm" style={{ color: isDark ? '#9ca3af' : '#4b5563' }}>{t('home.stats.examples')}</div>
           </div>
           <div className="text-center">
-            <div className="text-2xl font-bold text-primary">100%</div>
-            <div className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>{t('home.stats.free')}</div>
+            <div className="text-2xl font-bold" style={{ color: '#6366f1' }}>100%</div>
+            <div className="text-sm" style={{ color: isDark ? '#9ca3af' : '#4b5563' }}>{t('home.stats.free')}</div>
           </div>
         </div>
       </section>
 
       {/* Category Filter */}
-      <section className="mb-8">
-        <div className="flex flex-wrap gap-2 justify-center">
+      <section className="mb-5">
+        <div className="flex flex-wrap gap-2 justify-content-center">
           {categories.map(category => (
-            <button
+            <Button
               key={category}
+              label={category}
+              size="small"
               onClick={() => setSelectedCategory(category)}
-              className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
-                selectedCategory === category
-                  ? 'bg-primary text-white'
-                  : isDark
-                    ? 'bg-gray-800 text-gray-300 hover:bg-gray-700'
-                    : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
-              }`}
-            >
-              {category}
-            </button>
+              className={selectedCategory === category ? 'btn-primary' : ''}
+              style={selectedCategory !== category ? {
+                backgroundColor: isDark ? '#374151' : '#e5e7eb',
+                borderColor: isDark ? '#4b5563' : '#d1d5db',
+                color: isDark ? '#d1d5db' : '#374151'
+              } : {}}
+            />
           ))}
         </div>
       </section>
@@ -99,52 +112,77 @@ function HomeContent() {
       {/* Cheat Sheets Grid */}
       <section>
         {filteredSheets.length === 0 ? (
-          <div className="text-center py-12">
-            <p className={`${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
+          <div className="text-center py-6">
+            <p style={{ color: isDark ? '#9ca3af' : '#4b5563' }}>
               {t('home.noResults')}
             </p>
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          <div className="grid">
             {filteredSheets.map(sheet => (
-              <CheatCard
-                key={sheet.id}
-                id={sheet.id}
-                title={sheet.title}
-                description={sheet.description}
-                icon={sheet.icon}
-                href={sheet.href}
-                color={sheet.color}
-              />
+              <div key={sheet.id} className="col-12 md:col-6 lg:col-4 xl:col-3">
+                <CheatCard
+                  id={sheet.id}
+                  title={sheet.title}
+                  description={sheet.description}
+                  icon={sheet.icon}
+                  href={sheet.href}
+                  color={sheet.color}
+                />
+              </div>
             ))}
           </div>
         )}
       </section>
 
       {/* Features Section */}
-      <section className="mt-16 py-12 border-t border-gray-800">
-        <h2 className="text-2xl font-bold text-center mb-8">{t('home.whyUs')}</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div className={`text-center p-6 rounded-xl ${isDark ? 'bg-gray-800/50' : 'bg-white border border-gray-200'}`}>
-            <Download className="w-8 h-8 text-primary mx-auto mb-4" />
-            <h3 className="font-semibold mb-2">{t('home.features.quickAccess.title')}</h3>
-            <p className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
-              {t('home.features.quickAccess.description')}
-            </p>
+      <section className="mt-6 py-6" style={{ borderTop: `1px solid ${isDark ? '#374151' : '#e5e7eb'}` }}>
+        <h2 className="text-2xl font-bold text-center mb-5">{t('home.whyUs')}</h2>
+        <div className="grid">
+          <div className="col-12 md:col-4">
+            <div
+              className="text-center p-4 border-round-xl"
+              style={{
+                backgroundColor: isDark ? 'rgba(31, 41, 55, 0.5)' : '#fff',
+                border: isDark ? 'none' : '1px solid #e5e7eb'
+              }}
+            >
+              <i className="pi pi-download mb-3" style={{ fontSize: '2rem', color: '#6366f1' }}></i>
+              <h3 className="font-semibold mb-2">{t('home.features.quickAccess.title')}</h3>
+              <p className="text-sm m-0" style={{ color: isDark ? '#9ca3af' : '#4b5563' }}>
+                {t('home.features.quickAccess.description')}
+              </p>
+            </div>
           </div>
-          <div className={`text-center p-6 rounded-xl ${isDark ? 'bg-gray-800/50' : 'bg-white border border-gray-200'}`}>
-            <Star className="w-8 h-8 text-primary mx-auto mb-4" />
-            <h3 className="font-semibold mb-2">{t('home.features.favorites.title')}</h3>
-            <p className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
-              {t('home.features.favorites.description')}
-            </p>
+          <div className="col-12 md:col-4">
+            <div
+              className="text-center p-4 border-round-xl"
+              style={{
+                backgroundColor: isDark ? 'rgba(31, 41, 55, 0.5)' : '#fff',
+                border: isDark ? 'none' : '1px solid #e5e7eb'
+              }}
+            >
+              <i className="pi pi-star mb-3" style={{ fontSize: '2rem', color: '#6366f1' }}></i>
+              <h3 className="font-semibold mb-2">{t('home.features.favorites.title')}</h3>
+              <p className="text-sm m-0" style={{ color: isDark ? '#9ca3af' : '#4b5563' }}>
+                {t('home.features.favorites.description')}
+              </p>
+            </div>
           </div>
-          <div className={`text-center p-6 rounded-xl ${isDark ? 'bg-gray-800/50' : 'bg-white border border-gray-200'}`}>
-            <Users className="w-8 h-8 text-primary mx-auto mb-4" />
-            <h3 className="font-semibold mb-2">{t('home.features.community.title')}</h3>
-            <p className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
-              {t('home.features.community.description')}
-            </p>
+          <div className="col-12 md:col-4">
+            <div
+              className="text-center p-4 border-round-xl"
+              style={{
+                backgroundColor: isDark ? 'rgba(31, 41, 55, 0.5)' : '#fff',
+                border: isDark ? 'none' : '1px solid #e5e7eb'
+              }}
+            >
+              <i className="pi pi-users mb-3" style={{ fontSize: '2rem', color: '#6366f1' }}></i>
+              <h3 className="font-semibold mb-2">{t('home.features.community.title')}</h3>
+              <p className="text-sm m-0" style={{ color: isDark ? '#9ca3af' : '#4b5563' }}>
+                {t('home.features.community.description')}
+              </p>
+            </div>
           </div>
         </div>
       </section>
@@ -154,7 +192,11 @@ function HomeContent() {
 
 export default function Home() {
   return (
-    <Suspense fallback={<div className="flex justify-center items-center min-h-screen">Loading...</div>}>
+    <Suspense fallback={
+      <div className="flex justify-content-center align-items-center" style={{ minHeight: '100vh' }}>
+        <ProgressSpinner />
+      </div>
+    }>
       <HomeContent />
     </Suspense>
   )

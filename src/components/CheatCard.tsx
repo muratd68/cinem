@@ -2,11 +2,12 @@
 
 import Link from 'next/link'
 import { memo } from 'react'
-import { Heart } from 'lucide-react'
 import { useTheme } from '@/context/ThemeContext'
 import { useFavorites } from '@/context/FavoritesContext'
 import { useToast } from '@/context/ToastContext'
 import { useLanguage } from '@/context/LanguageContext'
+import { Button } from 'primereact/button'
+import { Card } from 'primereact/card'
 import { LucideIcon } from 'lucide-react'
 
 interface CheatCardProps {
@@ -36,29 +37,43 @@ function CheatCard({ id, title, description, icon: Icon, href, color }: CheatCar
   }
 
   return (
-    <Link href={href}>
-      <div className={`cheat-card relative p-6 rounded-xl ${
-        isDark ? 'bg-gray-800/50 hover:bg-gray-800' : 'bg-white hover:bg-gray-50 border border-gray-200'
-      }`}>
-        <button
+    <Link href={href} className="no-underline">
+      <div
+        className="cheat-card relative p-4 border-round-xl"
+        style={{
+          backgroundColor: isDark ? 'rgba(31, 41, 55, 0.5)' : '#fff',
+          border: isDark ? 'none' : '1px solid #e5e7eb'
+        }}
+      >
+        <Button
+          icon={isFavorite(id) ? 'pi pi-heart-fill' : 'pi pi-heart'}
+          rounded
+          text
+          severity={isFavorite(id) ? 'danger' : 'secondary'}
           onClick={handleFavorite}
-          className="absolute top-4 right-4 p-1"
-        >
-          <Heart
-            className={`w-5 h-5 ${
-              isFavorite(id)
-                ? 'fill-red-500 text-red-500'
-                : isDark ? 'text-gray-500' : 'text-gray-400'
-            }`}
-          />
-        </button>
+          className="absolute"
+          style={{ top: '0.5rem', right: '0.5rem' }}
+          size="small"
+        />
 
-        <div className={`w-12 h-12 rounded-lg flex items-center justify-center mb-4 ${color}`}>
-          <Icon className="w-6 h-6 text-white" />
+        <div
+          className="flex align-items-center justify-content-center border-round-lg mb-3"
+          style={{
+            width: '48px',
+            height: '48px',
+            backgroundColor: color
+          }}
+        >
+          <Icon style={{ width: '24px', height: '24px', color: '#fff' }} />
         </div>
 
-        <h3 className="text-lg font-semibold mb-2">{title}</h3>
-        <p className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
+        <h3 className="text-lg font-semibold mb-2 m-0" style={{ color: isDark ? '#fff' : '#1f2937' }}>
+          {title}
+        </h3>
+        <p
+          className="text-sm m-0"
+          style={{ color: isDark ? '#9ca3af' : '#4b5563' }}
+        >
           {description}
         </p>
       </div>

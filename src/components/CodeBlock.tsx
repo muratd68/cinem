@@ -1,9 +1,9 @@
 'use client'
 
 import { useState } from 'react'
-import { Copy, Check } from 'lucide-react'
 import { useTheme } from '@/context/ThemeContext'
 import { useToast } from '@/context/ToastContext'
+import { Button } from 'primereact/button'
 
 interface CodeBlockProps {
   code: string
@@ -26,19 +26,17 @@ export default function CodeBlock({ code, language = 'python', title }: CodeBloc
   return (
     <div className="code-block my-4">
       <div className="code-header">
-        <span className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
+        <span style={{ fontSize: '0.875rem', color: isDark ? '#9ca3af' : '#4b5563' }}>
           {title || language}
         </span>
-        <button
+        <Button
+          icon={copied ? 'pi pi-check' : 'pi pi-copy'}
+          rounded
+          text
+          size="small"
           onClick={handleCopy}
-          className={`p-1 rounded ${isDark ? 'hover:bg-gray-700' : 'hover:bg-gray-300'}`}
-        >
-          {copied ? (
-            <Check className="w-4 h-4 text-green-400" />
-          ) : (
-            <Copy className={`w-4 h-4 ${isDark ? 'text-gray-400' : 'text-gray-600'}`} />
-          )}
-        </button>
+          style={{ color: copied ? '#34d399' : (isDark ? '#9ca3af' : '#4b5563') }}
+        />
       </div>
       <div className="code-content">
         <pre>

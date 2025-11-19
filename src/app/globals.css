@@ -1,11 +1,15 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* PrimeReact Themes */
+@import 'primereact/resources/themes/lara-dark-indigo/theme.css';
+@import 'primereact/resources/primereact.min.css';
+@import 'primeicons/primeicons.css';
+@import 'primeflex/primeflex.css';
 
 :root {
   --foreground-rgb: 255, 255, 255;
   --background-start-rgb: 15, 23, 42;
   --background-end-rgb: 2, 6, 23;
+  --primary-color: #6366f1;
+  --secondary-color: #8b5cf6;
 }
 
 body {
@@ -17,6 +21,8 @@ body {
     )
     rgb(var(--background-start-rgb));
   min-height: 100vh;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
 }
 
 /* Light mode */
@@ -34,31 +40,43 @@ body {
 
 /* Code block styling */
 .code-block {
-  @apply bg-gray-900 rounded-lg overflow-hidden;
+  background-color: #1f2937;
+  border-radius: 0.5rem;
+  overflow: hidden;
 }
 
 .light .code-block {
-  @apply bg-gray-100 border border-gray-200;
+  background-color: #f3f4f6;
+  border: 1px solid #e5e7eb;
 }
 
 .code-header {
-  @apply flex justify-between items-center px-4 py-2 bg-gray-800 border-b border-gray-700;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  background-color: #374151;
+  border-bottom: 1px solid #4b5563;
 }
 
 .light .code-header {
-  @apply bg-gray-200 border-gray-300;
+  background-color: #e5e7eb;
+  border-color: #d1d5db;
 }
 
 .code-content {
-  @apply p-4 overflow-x-auto text-sm font-mono;
+  padding: 1rem;
+  overflow-x: auto;
+  font-size: 0.875rem;
+  font-family: monospace;
 }
 
 .code-content code {
-  @apply text-green-400;
+  color: #34d399;
 }
 
 .light .code-content code {
-  @apply text-green-700;
+  color: #059669;
 }
 
 /* Custom scrollbar */
@@ -68,44 +86,91 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  @apply bg-gray-800;
+  background-color: #374151;
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-gray-600 rounded;
+  background-color: #6b7280;
+  border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  @apply bg-gray-500;
+  background-color: #9ca3af;
 }
 
 .light ::-webkit-scrollbar-track {
-  @apply bg-gray-200;
+  background-color: #e5e7eb;
 }
 
 .light ::-webkit-scrollbar-thumb {
-  @apply bg-gray-400;
+  background-color: #9ca3af;
 }
 
 /* Syntax highlighting */
-.keyword { @apply text-purple-400; }
-.string { @apply text-yellow-300; }
-.comment { @apply text-gray-500 italic; }
-.function { @apply text-blue-400; }
-.number { @apply text-orange-400; }
+.keyword { color: #a78bfa; }
+.string { color: #fde047; }
+.comment { color: #6b7280; font-style: italic; }
+.function { color: #60a5fa; }
+.number { color: #fb923c; }
 
-.light .keyword { @apply text-purple-600; }
-.light .string { @apply text-yellow-600; }
-.light .comment { @apply text-gray-500; }
-.light .function { @apply text-blue-600; }
-.light .number { @apply text-orange-600; }
+.light .keyword { color: #7c3aed; }
+.light .string { color: #ca8a04; }
+.light .comment { color: #6b7280; }
+.light .function { color: #2563eb; }
+.light .number { color: #ea580c; }
 
 /* Card hover effect */
 .cheat-card {
-  @apply transition-all duration-300 hover:scale-105 hover:shadow-xl;
+  transition: all 0.3s ease;
+}
+
+.cheat-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
 }
 
 /* Gradient text */
 .gradient-text {
-  @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary;
+  background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Primary button style */
+.btn-primary {
+  background-color: var(--primary-color) !important;
+  border-color: var(--primary-color) !important;
+}
+
+.btn-primary:hover {
+  background-color: #4f46e5 !important;
+  border-color: #4f46e5 !important;
+}
+
+/* Custom card styles */
+.custom-card {
+  background-color: rgba(31, 41, 55, 0.5);
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+}
+
+.light .custom-card {
+  background-color: #ffffff;
+  border: 1px solid #e5e7eb;
+}
+
+/* Override PrimeReact for light mode */
+.light .p-component {
+  color: #1f2937;
+}
+
+.light .p-inputtext {
+  background-color: #f3f4f6;
+  border-color: #e5e7eb;
+  color: #1f2937;
+}
+
+.light .p-button.p-button-text {
+  color: #4b5563;
 }

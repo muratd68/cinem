@@ -1,9 +1,10 @@
 'use client'
 
 import { useState } from 'react'
-import { Download, Loader2 } from 'lucide-react'
 import { useTheme } from '@/context/ThemeContext'
 import { useToast } from '@/context/ToastContext'
+import { Button } from 'primereact/button'
+import { Dialog } from 'primereact/dialog'
 
 interface PDFDownloadProps {
   title: string
@@ -37,64 +38,64 @@ export default function PDFDownload({ title, sheetId }: PDFDownloadProps) {
     }, 2000)
   }
 
-  if (showAd) {
-    return (
-      <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-        <div className={`max-w-md w-full rounded-xl p-6 ${isDark ? 'bg-gray-800' : 'bg-white'}`}>
-          <h3 className="text-xl font-bold mb-4">PDF İndirme</h3>
-
-          {/* Ad placeholder */}
-          <div className={`h-40 rounded-lg flex items-center justify-center mb-4 ${isDark ? 'bg-gray-700' : 'bg-gray-100'}`}>
-            <span className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
-              Reklam Alanı
-            </span>
-          </div>
-
-          <p className={`text-sm mb-4 ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
-            PDF dosyanız hazırlanıyor. İndirmeye devam etmek için aşağıdaki butona tıklayın.
-          </p>
-
-          <div className="flex gap-3">
-            <button
-              onClick={() => setShowAd(false)}
-              className={`flex-1 py-2 px-4 rounded-lg ${isDark ? 'bg-gray-700 hover:bg-gray-600' : 'bg-gray-200 hover:bg-gray-300'}`}
-            >
-              İptal
-            </button>
-            <button
-              onClick={proceedDownload}
-              disabled={isLoading}
-              className="flex-1 py-2 px-4 bg-primary text-white rounded-lg hover:bg-primary/90 flex items-center justify-center gap-2"
-            >
-              {isLoading ? (
-                <>
-                  <Loader2 className="w-4 h-4 animate-spin" />
-                  Hazırlanıyor...
-                </>
-              ) : (
-                <>
-                  <Download className="w-4 h-4" />
-                  İndir
-                </>
-              )}
-            </button>
-          </div>
-        </div>
-      </div>
-    )
-  }
+  const dialogFooter = (
+    <div className="flex gap-3 justify-content-end">
+      <Button
+        label="İptal"
+        icon="pi pi-times"
+        onClick={() => setShowAd(false)}
+        className="p-button-text"
+      />
+      <Button
+        label={isLoading ? 'Hazırlanıyor...' : 'İndir'}
+        icon={isLoading ? 'pi pi-spin pi-spinner' : 'pi pi-download'}
+        onClick={proceedDownload}
+        disabled={isLoading}
+        className="btn-primary"
+      />
+    </div>
+  )
 
   return (
-    <button
-      onClick={handleDownload}
-      className={`inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium ${
-        isDark
-          ? 'bg-gray-800 hover:bg-gray-700 text-white'
-          : 'bg-gray-100 hover:bg-gray-200 text-gray-900'
-      }`}
-    >
-      <Download className="w-4 h-4" />
-      PDF İndir
-    </button>
+    <>
+      <Button
+        label="PDF İndir"
+        icon="pi pi-download"
+        onClick={handleDownload}
+        className="p-button-outlined"
+        size="small"
+        style={{
+          backgroundColor: isDark ? '#374151' : '#f3f4f6',
+          borderColor: isDark ? '#4b5563' : '#e5e7eb',
+          color: isDark ? '#fff' : '#1f2937'
+        }}
+      />
+
+      <Dialog
+        header="PDF İndirme"
+        visible={showAd}
+        onHide={() => setShowAd(false)}
+        footer={dialogFooter}
+        style={{ width: '400px' }}
+        className={isDark ? 'p-dialog-dark' : ''}
+      >
+        {/* Ad placeholder */}
+        <div
+          className="flex align-items-center justify-content-center mb-4 border-round-lg"
+          style={{
+            height: '160px',
+            backgroundColor: isDark ? '#374151' : '#f3f4f6'
+          }}
+        >
+          <span style={{ fontSize: '0.875rem', color: isDark ? '#9ca3af' : '#6b7280' }}>
+            Reklam Alanı
+          </span>
+        </div>
+
+        <p style={{ fontSize: '0.875rem', color: isDark ? '#9ca3af' : '#4b5563' }}>
+          PDF dosyanız hazırlanıyor. İndirmeye devam etmek için aşağıdaki butona tıklayın.
+        </p>
+      </Dialog>
+    </>
   )
 }
