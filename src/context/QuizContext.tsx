@@ -846,5 +846,486 @@ export const quizData: Record<string, QuizQuestion[]> = {
       correct: 1,
       explanation: 'align-items öğeleri dikey eksende hizalar.'
     }
+  ],
+  nodejs: [
+    {
+      id: 'node1',
+      question: 'Express\'te middleware eklemek için hangi metod kullanılır?',
+      options: ['app.middleware()', 'app.use()', 'app.add()', 'app.register()'],
+      correct: 1,
+      explanation: 'app.use() middleware eklemek için kullanılır.'
+    },
+    {
+      id: 'node2',
+      question: 'Request body\'yi parse etmek için hangi middleware kullanılır?',
+      options: ['express.body()', 'express.json()', 'express.parse()', 'express.data()'],
+      correct: 1,
+      explanation: 'express.json() JSON body\'yi parse eder.'
+    },
+    {
+      id: 'node3',
+      question: 'Route parametresine nasıl erişilir?',
+      options: ['req.body', 'req.params', 'req.query', 'req.route'],
+      correct: 1,
+      explanation: 'req.params route parametrelerini içerir.'
+    },
+    {
+      id: 'node4',
+      question: 'JSON response göndermek için hangi metod kullanılır?',
+      options: ['res.send()', 'res.json()', 'res.write()', 'res.data()'],
+      correct: 1,
+      explanation: 'res.json() JSON response gönderir.'
+    },
+    {
+      id: 'node5',
+      question: 'Environment variable\'a nasıl erişilir?',
+      options: ['env.VAR', 'process.env.VAR', 'node.env.VAR', 'config.VAR'],
+      correct: 1,
+      explanation: 'process.env environment variable\'lara erişim sağlar.'
+    }
+  ],
+  vuejs: [
+    {
+      id: 'vue1',
+      question: 'Reactive state tanımlamak için hangi fonksiyon kullanılır?',
+      options: ['reactive()', 'ref()', 'state()', 'Both ref() and reactive()'],
+      correct: 3,
+      explanation: 'ref() primitive, reactive() object için kullanılır.'
+    },
+    {
+      id: 'vue2',
+      question: 'Computed property tanımlamak için hangi fonksiyon kullanılır?',
+      options: ['watch()', 'computed()', 'memo()', 'derive()'],
+      correct: 1,
+      explanation: 'computed() computed property tanımlar.'
+    },
+    {
+      id: 'vue3',
+      question: 'Event dinlemek için hangi directive kullanılır?',
+      options: ['v-on / @', 'v-bind / :', 'v-model', 'v-event'],
+      correct: 0,
+      explanation: 'v-on veya @ shorthand event listener ekler.'
+    },
+    {
+      id: 'vue4',
+      question: 'Two-way binding için hangi directive kullanılır?',
+      options: ['v-bind', 'v-on', 'v-model', 'v-sync'],
+      correct: 2,
+      explanation: 'v-model two-way data binding sağlar.'
+    },
+    {
+      id: 'vue5',
+      question: 'Component mount olduktan sonra çalışan hook hangisidir?',
+      options: ['onCreated', 'onMounted', 'onReady', 'onInit'],
+      correct: 1,
+      explanation: 'onMounted component DOM\'a eklendikten sonra çalışır.'
+    }
+  ],
+  nextjs: [
+    {
+      id: 'next1',
+      question: 'Client component olduğunu belirtmek için ne kullanılır?',
+      options: ['"use server"', '"use client"', 'export client', '@client'],
+      correct: 1,
+      explanation: '"use client" directive client component tanımlar.'
+    },
+    {
+      id: 'next2',
+      question: 'API route tanımlamak için hangi dosya adı kullanılır?',
+      options: ['api.ts', 'route.ts', 'handler.ts', 'endpoint.ts'],
+      correct: 1,
+      explanation: 'route.ts API route handler dosyasıdır.'
+    },
+    {
+      id: 'next3',
+      question: 'Static page generation için hangi fetch cache kullanılır?',
+      options: ['no-store', 'force-cache', 'revalidate', 'static'],
+      correct: 1,
+      explanation: 'force-cache (default) static generation yapar.'
+    },
+    {
+      id: 'next4',
+      question: 'Loading UI için hangi dosya kullanılır?',
+      options: ['loader.tsx', 'loading.tsx', 'spinner.tsx', 'wait.tsx'],
+      correct: 1,
+      explanation: 'loading.tsx Suspense fallback olarak kullanılır.'
+    },
+    {
+      id: 'next5',
+      question: 'Programmatic navigation için hangi hook kullanılır?',
+      options: ['useNavigate', 'useRouter', 'useHistory', 'useLocation'],
+      correct: 1,
+      explanation: 'useRouter programmatic navigation sağlar.'
+    }
+  ],
+  postgresql: [
+    {
+      id: 'pg1',
+      question: 'JSONB veri tipinin JSON\'dan farkı nedir?',
+      options: ['Daha yavaş', 'Binary format, daha hızlı', 'Text format', 'Compressed'],
+      correct: 1,
+      explanation: 'JSONB binary format olup sorgulamada daha hızlıdır.'
+    },
+    {
+      id: 'pg2',
+      question: 'Window function için hangi clause kullanılır?',
+      options: ['GROUP BY', 'OVER', 'PARTITION', 'WINDOW'],
+      correct: 1,
+      explanation: 'OVER clause window function tanımlar.'
+    },
+    {
+      id: 'pg3',
+      question: 'CTE (Common Table Expression) için hangi keyword kullanılır?',
+      options: ['CREATE', 'WITH', 'DEFINE', 'DECLARE'],
+      correct: 1,
+      explanation: 'WITH clause CTE tanımlar.'
+    },
+    {
+      id: 'pg4',
+      question: 'JSONB içinde key kontrolü için hangi operatör kullanılır?',
+      options: ['@>', '?', '->', '->'],
+      correct: 1,
+      explanation: '? operatörü key varlığını kontrol eder.'
+    },
+    {
+      id: 'pg5',
+      question: 'Array içinde eleman aramak için hangi keyword kullanılır?',
+      options: ['IN', 'ANY', 'CONTAINS', 'HAS'],
+      correct: 1,
+      explanation: 'ANY array içinde eleman arar.'
+    }
+  ],
+  redis: [
+    {
+      id: 'redis1',
+      question: 'Key-value set etmek için hangi komut kullanılır?',
+      options: ['PUT', 'SET', 'INSERT', 'ADD'],
+      correct: 1,
+      explanation: 'SET key-value çifti kaydeder.'
+    },
+    {
+      id: 'redis2',
+      question: 'Hash field set etmek için hangi komut kullanılır?',
+      options: ['HSET', 'HADD', 'HPUT', 'HINSERT'],
+      correct: 0,
+      explanation: 'HSET hash field\'ı set eder.'
+    },
+    {
+      id: 'redis3',
+      question: 'Liste başına eleman eklemek için hangi komut kullanılır?',
+      options: ['LADD', 'LPUSH', 'LINSERT', 'LPREPEND'],
+      correct: 1,
+      explanation: 'LPUSH liste başına eleman ekler.'
+    },
+    {
+      id: 'redis4',
+      question: 'Key için expiration set etmek için hangi komut kullanılır?',
+      options: ['TTL', 'EXPIRE', 'TIMEOUT', 'SETEX'],
+      correct: 1,
+      explanation: 'EXPIRE key için timeout belirler.'
+    },
+    {
+      id: 'redis5',
+      question: 'Sorted set\'e score ile eleman eklemek için hangi komut kullanılır?',
+      options: ['SADD', 'ZADD', 'SSET', 'ZSET'],
+      correct: 1,
+      explanation: 'ZADD sorted set\'e eleman ekler.'
+    }
+  ],
+  terraform: [
+    {
+      id: 'tf1',
+      question: 'Terraform projesi başlatmak için hangi komut kullanılır?',
+      options: ['terraform start', 'terraform init', 'terraform new', 'terraform create'],
+      correct: 1,
+      explanation: 'terraform init projeyi initialize eder.'
+    },
+    {
+      id: 'tf2',
+      question: 'Değişiklikleri önizlemek için hangi komut kullanılır?',
+      options: ['terraform preview', 'terraform plan', 'terraform show', 'terraform diff'],
+      correct: 1,
+      explanation: 'terraform plan değişiklikleri gösterir.'
+    },
+    {
+      id: 'tf3',
+      question: 'Kaynakları silmek için hangi komut kullanılır?',
+      options: ['terraform delete', 'terraform destroy', 'terraform remove', 'terraform clean'],
+      correct: 1,
+      explanation: 'terraform destroy kaynakları siler.'
+    },
+    {
+      id: 'tf4',
+      question: 'Variable tanımlamak için hangi blok kullanılır?',
+      options: ['var', 'variable', 'input', 'param'],
+      correct: 1,
+      explanation: 'variable bloğu değişken tanımlar.'
+    },
+    {
+      id: 'tf5',
+      question: 'Birden fazla kaynak oluşturmak için ne kullanılır?',
+      options: ['loop', 'count/for_each', 'repeat', 'multiple'],
+      correct: 1,
+      explanation: 'count veya for_each multiple resource oluşturur.'
+    }
+  ],
+  ansible: [
+    {
+      id: 'ansible1',
+      question: 'Ansible playbook çalıştırmak için hangi komut kullanılır?',
+      options: ['ansible run', 'ansible-playbook', 'ansible play', 'ansible execute'],
+      correct: 1,
+      explanation: 'ansible-playbook komutu playbook dosyalarını çalıştırır.'
+    },
+    {
+      id: 'ansible2',
+      question: 'Şifreli dosya oluşturmak için hangi komut kullanılır?',
+      options: ['ansible-encrypt', 'ansible-vault', 'ansible-secret', 'ansible-crypt'],
+      correct: 1,
+      explanation: 'ansible-vault dosyaları şifrelemek için kullanılır.'
+    },
+    {
+      id: 'ansible3',
+      question: 'Task sonucunu saklamak için hangi anahtar kelime kullanılır?',
+      options: ['save', 'store', 'register', 'capture'],
+      correct: 2,
+      explanation: 'register task çıktısını bir değişkende saklar.'
+    },
+    {
+      id: 'ansible4',
+      question: 'Koşullu task çalıştırmak için hangi anahtar kelime kullanılır?',
+      options: ['if', 'when', 'condition', 'check'],
+      correct: 1,
+      explanation: 'when koşullu task çalıştırma için kullanılır.'
+    },
+    {
+      id: 'ansible5',
+      question: 'Role bağımlılıklarını tanımlamak için hangi dosya kullanılır?',
+      options: ['requirements.yml', 'dependencies.yml', 'meta/main.yml', 'roles.yml'],
+      correct: 2,
+      explanation: 'meta/main.yml role bağımlılıklarını tanımlar.'
+    }
+  ],
+  nginx: [
+    {
+      id: 'nginx1',
+      question: 'Konfigürasyonu test etmek için hangi komut kullanılır?',
+      options: ['nginx -c', 'nginx -t', 'nginx -v', 'nginx -s'],
+      correct: 1,
+      explanation: 'nginx -t konfigürasyonu test eder.'
+    },
+    {
+      id: 'nginx2',
+      question: 'Reverse proxy için hangi directive kullanılır?',
+      options: ['proxy_to', 'proxy_pass', 'forward_to', 'upstream'],
+      correct: 1,
+      explanation: 'proxy_pass backend\'e yönlendirir.'
+    },
+    {
+      id: 'nginx3',
+      question: 'Location block için exact match nasıl yapılır?',
+      options: ['location /', 'location =', 'location ~', 'location ^~'],
+      correct: 1,
+      explanation: '= prefix exact match yapar.'
+    },
+    {
+      id: 'nginx4',
+      question: 'SSL sertifikası tanımlamak için hangi directive kullanılır?',
+      options: ['ssl_cert', 'ssl_certificate', 'certificate', 'https_cert'],
+      correct: 1,
+      explanation: 'ssl_certificate sertifika dosyasını belirtir.'
+    },
+    {
+      id: 'nginx5',
+      question: 'Konfigürasyonu yeniden yüklemek için hangi sinyal kullanılır?',
+      options: ['nginx -s restart', 'nginx -s reload', 'nginx -s refresh', 'nginx -s update'],
+      correct: 1,
+      explanation: 'nginx -s reload konfigürasyonu yeniden yükler.'
+    }
+  ],
+  'github-actions': [
+    {
+      id: 'gha1',
+      question: 'Workflow dosyaları nerede bulunur?',
+      options: ['.github/actions/', '.github/workflows/', '.workflows/', 'actions/'],
+      correct: 1,
+      explanation: '.github/workflows/ dizininde YAML dosyaları bulunur.'
+    },
+    {
+      id: 'gha2',
+      question: 'Manuel tetikleme için hangi event kullanılır?',
+      options: ['manual', 'workflow_dispatch', 'trigger', 'on_demand'],
+      correct: 1,
+      explanation: 'workflow_dispatch manuel tetikleme sağlar.'
+    },
+    {
+      id: 'gha3',
+      question: 'Secret\'a nasıl erişilir?',
+      options: ['env.SECRET', 'secrets.SECRET', 'github.secret.SECRET', 'vars.SECRET'],
+      correct: 1,
+      explanation: '${{ secrets.NAME }} syntax\'ı ile erişilir.'
+    },
+    {
+      id: 'gha4',
+      question: 'Job bağımlılığı tanımlamak için ne kullanılır?',
+      options: ['depends', 'needs', 'requires', 'after'],
+      correct: 1,
+      explanation: 'needs diğer job\'ların tamamlanmasını bekler.'
+    },
+    {
+      id: 'gha5',
+      question: 'Matrix strategy ne işe yarar?',
+      options: ['Parallel jobs', 'Multiple configurations', 'Load balancing', 'Caching'],
+      correct: 1,
+      explanation: 'Matrix farklı konfigürasyonlarla test eder.'
+    }
+  ],
+  pyspark: [
+    {
+      id: 'spark1',
+      question: 'SparkSession oluşturmak için hangi metod kullanılır?',
+      options: ['SparkSession.create()', 'SparkSession.builder.getOrCreate()', 'SparkSession.new()', 'SparkSession.start()'],
+      correct: 1,
+      explanation: 'builder.getOrCreate() SparkSession oluşturur.'
+    },
+    {
+      id: 'spark2',
+      question: 'DataFrame filtrelemek için hangi metod kullanılır?',
+      options: ['select()', 'filter() / where()', 'query()', 'find()'],
+      correct: 1,
+      explanation: 'filter() veya where() satır filtreler.'
+    },
+    {
+      id: 'spark3',
+      question: 'GroupBy sonrası aggregation için hangi metod kullanılır?',
+      options: ['aggregate()', 'agg()', 'summarize()', 'compute()'],
+      correct: 1,
+      explanation: 'agg() multiple aggregation uygular.'
+    },
+    {
+      id: 'spark4',
+      question: 'Yeni kolon eklemek için hangi metod kullanılır?',
+      options: ['addColumn()', 'withColumn()', 'newColumn()', 'createColumn()'],
+      correct: 1,
+      explanation: 'withColumn() yeni kolon ekler veya günceller.'
+    },
+    {
+      id: 'spark5',
+      question: 'SQL sorgusu çalıştırmak için ne kullanılır?',
+      options: ['df.sql()', 'spark.sql()', 'execute()', 'query()'],
+      correct: 1,
+      explanation: 'spark.sql() SQL sorgusu çalıştırır.'
+    }
+  ],
+  keras: [
+    {
+      id: 'keras1',
+      question: 'Sequential model\'e layer eklemek için hangi metod kullanılır?',
+      options: ['insert()', 'add()', 'append()', 'push()'],
+      correct: 1,
+      explanation: 'add() metodu layer ekler.'
+    },
+    {
+      id: 'keras2',
+      question: 'Model derlemek için hangi metod kullanılır?',
+      options: ['build()', 'compile()', 'setup()', 'configure()'],
+      correct: 1,
+      explanation: 'compile() optimizer ve loss tanımlar.'
+    },
+    {
+      id: 'keras3',
+      question: 'Model eğitmek için hangi metod kullanılır?',
+      options: ['train()', 'fit()', 'learn()', 'run()'],
+      correct: 1,
+      explanation: 'fit() modeli eğitir.'
+    },
+    {
+      id: 'keras4',
+      question: 'Early stopping için hangi callback kullanılır?',
+      options: ['StopTraining', 'EarlyStopping', 'EarlyStop', 'TrainingStop'],
+      correct: 1,
+      explanation: 'EarlyStopping overfitting\'i önler.'
+    },
+    {
+      id: 'keras5',
+      question: 'Fully connected layer için hangi class kullanılır?',
+      options: ['layers.Full', 'layers.Dense', 'layers.Linear', 'layers.FC'],
+      correct: 1,
+      explanation: 'Dense fully connected layer oluşturur.'
+    }
+  ],
+  opencv: [
+    {
+      id: 'cv1',
+      question: 'Görüntü okumak için hangi fonksiyon kullanılır?',
+      options: ['cv2.read()', 'cv2.imread()', 'cv2.load()', 'cv2.open()'],
+      correct: 1,
+      explanation: 'cv2.imread() görüntü dosyası okur.'
+    },
+    {
+      id: 'cv2',
+      question: 'BGR\'dan grayscale\'e dönüşüm için ne kullanılır?',
+      options: ['cv2.gray()', 'cv2.cvtColor()', 'cv2.convert()', 'cv2.toBW()'],
+      correct: 1,
+      explanation: 'cv2.cvtColor() renk dönüşümü yapar.'
+    },
+    {
+      id: 'cv3',
+      question: 'Kenar tespiti için hangi fonksiyon kullanılır?',
+      options: ['cv2.edges()', 'cv2.Canny()', 'cv2.detect()', 'cv2.findEdges()'],
+      correct: 1,
+      explanation: 'cv2.Canny() kenar tespiti yapar.'
+    },
+    {
+      id: 'cv4',
+      question: 'Görüntü boyutunu değiştirmek için hangi fonksiyon kullanılır?',
+      options: ['cv2.scale()', 'cv2.resize()', 'cv2.reshape()', 'cv2.transform()'],
+      correct: 1,
+      explanation: 'cv2.resize() görüntü boyutunu değiştirir.'
+    },
+    {
+      id: 'cv5',
+      question: 'Kontur bulmak için hangi fonksiyon kullanılır?',
+      options: ['cv2.contours()', 'cv2.findContours()', 'cv2.getContours()', 'cv2.detectContours()'],
+      correct: 1,
+      explanation: 'cv2.findContours() konturları bulur.'
+    }
+  ],
+  nlp: [
+    {
+      id: 'nlp1',
+      question: 'SpaCy\'de model yüklemek için hangi fonksiyon kullanılır?',
+      options: ['spacy.get()', 'spacy.load()', 'spacy.model()', 'spacy.import()'],
+      correct: 1,
+      explanation: 'spacy.load() dil modelini yükler.'
+    },
+    {
+      id: 'nlp2',
+      question: 'Named Entity Recognition sonuçlarına nasıl erişilir?',
+      options: ['doc.entities', 'doc.ents', 'doc.ner', 'doc.names'],
+      correct: 1,
+      explanation: 'doc.ents entity\'leri içerir.'
+    },
+    {
+      id: 'nlp3',
+      question: 'Token\'ın kökünü almak için hangi attribute kullanılır?',
+      options: ['token.root', 'token.lemma_', 'token.stem', 'token.base'],
+      correct: 1,
+      explanation: 'token.lemma_ lemmatize edilmiş formu verir.'
+    },
+    {
+      id: 'nlp4',
+      question: 'Part-of-speech tag\'ına nasıl erişilir?',
+      options: ['token.tag', 'token.pos_', 'token.part', 'token.speech'],
+      correct: 1,
+      explanation: 'token.pos_ POS tag\'ını verir.'
+    },
+    {
+      id: 'nlp5',
+      question: 'Stop word kontrolü için hangi attribute kullanılır?',
+      options: ['token.stop', 'token.is_stop', 'token.stopword', 'token.is_common'],
+      correct: 1,
+      explanation: 'token.is_stop stop word olup olmadığını kontrol eder.'
+    }
   ]
 }

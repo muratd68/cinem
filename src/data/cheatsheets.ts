@@ -1,7 +1,8 @@
 import {
   Code, Database, BarChart3, Brain, Cpu, GitBranch,
   Terminal, FileCode, Calculator, Layers, Workflow, Table,
-  Container, Atom, Server, Ship, Cloud, Zap, FileJson, Palette
+  Container, Atom, Server, Ship, Cloud, Zap, FileJson, Palette,
+  Eye, MessageSquare
 } from 'lucide-react'
 
 export interface CheatSheet {
@@ -203,6 +204,123 @@ export const cheatsheets: CheatSheet[] = [
     href: '/css',
     color: 'bg-blue-400',
     category: 'Web Development'
+  },
+  {
+    id: 'nodejs',
+    title: 'Node.js/Express',
+    description: 'Backend JavaScript, routing, middleware, API',
+    icon: Server,
+    href: '/nodejs',
+    color: 'bg-green-600',
+    category: 'Web Development'
+  },
+  {
+    id: 'vuejs',
+    title: 'Vue.js',
+    description: 'Composition API, reactivity, components, Pinia',
+    icon: Atom,
+    href: '/vuejs',
+    color: 'bg-emerald-500',
+    category: 'Web Development'
+  },
+  {
+    id: 'nextjs',
+    title: 'Next.js',
+    description: 'App router, SSR, API routes, server actions',
+    icon: Layers,
+    href: '/nextjs',
+    color: 'bg-black',
+    category: 'Web Development'
+  },
+  {
+    id: 'postgresql',
+    title: 'PostgreSQL',
+    description: 'JSONB, window functions, CTE, indexes',
+    icon: Database,
+    href: '/postgresql',
+    color: 'bg-blue-700',
+    category: 'Veritabani'
+  },
+  {
+    id: 'redis',
+    title: 'Redis',
+    description: 'String, hash, list, set, sorted set, pub/sub',
+    icon: Database,
+    href: '/redis',
+    color: 'bg-red-600',
+    category: 'Veritabani'
+  },
+  {
+    id: 'terraform',
+    title: 'Terraform',
+    description: 'IaC, providers, resources, modules, state',
+    icon: Cloud,
+    href: '/terraform',
+    color: 'bg-purple-600',
+    category: 'DevOps'
+  },
+  {
+    id: 'ansible',
+    title: 'Ansible',
+    description: 'Playbooks, roles, inventory, modules, vault',
+    icon: Server,
+    href: '/ansible',
+    color: 'bg-red-500',
+    category: 'DevOps'
+  },
+  {
+    id: 'nginx',
+    title: 'Nginx',
+    description: 'Reverse proxy, SSL, caching, load balancing',
+    icon: Server,
+    href: '/nginx',
+    color: 'bg-green-600',
+    category: 'DevOps'
+  },
+  {
+    id: 'github-actions',
+    title: 'GitHub Actions',
+    description: 'CI/CD, workflows, jobs, matrix, caching',
+    icon: GitBranch,
+    href: '/github-actions',
+    color: 'bg-gray-800',
+    category: 'DevOps'
+  },
+  {
+    id: 'pyspark',
+    title: 'PySpark',
+    description: 'DataFrame, SQL, transformations, aggregations',
+    icon: Database,
+    href: '/pyspark',
+    color: 'bg-orange-500',
+    category: 'Data Science'
+  },
+  {
+    id: 'keras',
+    title: 'Keras',
+    description: 'Sequential, Functional API, layers, callbacks',
+    icon: Brain,
+    href: '/keras',
+    color: 'bg-red-600',
+    category: 'Deep Learning'
+  },
+  {
+    id: 'opencv',
+    title: 'OpenCV',
+    description: 'Image processing, filters, contours, detection',
+    icon: Eye,
+    href: '/opencv',
+    color: 'bg-blue-600',
+    category: 'Data Science'
+  },
+  {
+    id: 'nlp',
+    title: 'NLP/SpaCy',
+    description: 'Tokenization, NER, POS tagging, word vectors',
+    icon: MessageSquare,
+    href: '/nlp',
+    color: 'bg-indigo-600',
+    category: 'Data Science'
   }
 ]
 
