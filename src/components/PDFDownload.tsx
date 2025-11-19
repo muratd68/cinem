@@ -1,10 +1,15 @@
 'use client'
 
 import { useState } from 'react'
+import dynamic from 'next/dynamic'
 import { useTheme } from '@/context/ThemeContext'
 import { useToast } from '@/context/ToastContext'
 import { Button } from 'primereact/button'
-import { Dialog } from 'primereact/dialog'
+
+// Lazy load Dialog
+const Dialog = dynamic(() => import('primereact/dialog').then(mod => mod.Dialog), {
+  ssr: false
+})
 
 interface PDFDownloadProps {
   title: string

@@ -2,13 +2,18 @@
 
 import Link from 'next/link'
 import { useState } from 'react'
+import dynamic from 'next/dynamic'
 import { useTheme } from '@/context/ThemeContext'
 import { useFavorites } from '@/context/FavoritesContext'
 import { useLanguage } from '@/context/LanguageContext'
 import { InputText } from 'primereact/inputtext'
 import { Button } from 'primereact/button'
 import { Badge } from 'primereact/badge'
-import { Sidebar } from 'primereact/sidebar'
+
+// Lazy load heavy component
+const Sidebar = dynamic(() => import('primereact/sidebar').then(mod => mod.Sidebar), {
+  ssr: false
+})
 
 export default function Navbar() {
   const { isDark, toggleTheme } = useTheme()

@@ -6,8 +6,13 @@ import { useTheme } from '@/context/ThemeContext'
 import { useLanguage } from '@/context/LanguageContext'
 import CheatCard from '@/components/CheatCard'
 import { cheatsheets, categories } from '@/data/cheatsheets'
+import dynamic from 'next/dynamic'
 import { Button } from 'primereact/button'
-import { ProgressSpinner } from 'primereact/progressspinner'
+
+// Lazy load ProgressSpinner
+const ProgressSpinner = dynamic(() => import('primereact/progressspinner').then(mod => mod.ProgressSpinner), {
+  ssr: false
+})
 
 function HomeContent() {
   const { isDark } = useTheme()

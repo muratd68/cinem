@@ -7,7 +7,6 @@ import { useFavorites } from '@/context/FavoritesContext'
 import { useToast } from '@/context/ToastContext'
 import { useLanguage } from '@/context/LanguageContext'
 import { Button } from 'primereact/button'
-import { Card } from 'primereact/card'
 import { LucideIcon } from 'lucide-react'
 
 interface CheatCardProps {
