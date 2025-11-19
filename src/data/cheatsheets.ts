@@ -2,7 +2,7 @@ import {
   Code, Database, BarChart3, Brain, Cpu, GitBranch,
   Terminal, FileCode, Calculator, Layers, Workflow, Table,
   Container, Atom, Server, Ship, Cloud, Zap, FileJson, Palette,
-  Eye, MessageSquare
+  Eye, MessageSquare, Search, Shield, Wifi
 } from 'lucide-react'
 
 export interface CheatSheet {
@@ -321,6 +321,168 @@ export const cheatsheets: CheatSheet[] = [
     href: '/nlp',
     color: 'bg-indigo-600',
     category: 'Data Science'
+  },
+  {
+    id: 'huggingface',
+    title: 'Hugging Face',
+    description: 'Transformers, pipelines, fine-tuning, datasets',
+    icon: Brain,
+    href: '/huggingface',
+    color: 'bg-yellow-500',
+    category: 'Deep Learning'
+  },
+  {
+    id: 'mlflow',
+    title: 'MLflow',
+    description: 'Experiment tracking, model registry, deployment',
+    icon: Workflow,
+    href: '/mlflow',
+    color: 'bg-blue-600',
+    category: 'Machine Learning'
+  },
+  {
+    id: 'airflow',
+    title: 'Apache Airflow',
+    description: 'DAGs, operators, sensors, scheduling',
+    icon: Workflow,
+    href: '/airflow',
+    color: 'bg-teal-500',
+    category: 'Data Science'
+  },
+  {
+    id: 'elasticsearch',
+    title: 'Elasticsearch',
+    description: 'Search queries, aggregations, mappings',
+    icon: Search,
+    href: '/elasticsearch',
+    color: 'bg-yellow-600',
+    category: 'Veritabani'
+  },
+  {
+    id: 'sparksql',
+    title: 'Spark SQL',
+    description: 'DataFrame, SQL queries, UDFs, optimization',
+    icon: Database,
+    href: '/sparksql',
+    color: 'bg-orange-600',
+    category: 'Data Science'
+  },
+  {
+    id: 'azure',
+    title: 'Azure',
+    description: 'CLI, VMs, Storage, Functions, AKS',
+    icon: Cloud,
+    href: '/azure',
+    color: 'bg-blue-500',
+    category: 'Cloud'
+  },
+  {
+    id: 'gcp',
+    title: 'GCP',
+    description: 'gcloud, Compute, Storage, GKE, BigQuery',
+    icon: Cloud,
+    href: '/gcp',
+    color: 'bg-blue-600',
+    category: 'Cloud'
+  },
+  {
+    id: 'prometheus',
+    title: 'Prometheus',
+    description: 'PromQL, metrics, alerting, recording rules',
+    icon: BarChart3,
+    href: '/prometheus',
+    color: 'bg-orange-500',
+    category: 'DevOps'
+  },
+  {
+    id: 'grafana',
+    title: 'Grafana',
+    description: 'Dashboards, panels, variables, alerting',
+    icon: BarChart3,
+    href: '/grafana',
+    color: 'bg-orange-600',
+    category: 'DevOps'
+  },
+  {
+    id: 'helm',
+    title: 'Helm',
+    description: 'Charts, templates, values, releases',
+    icon: Ship,
+    href: '/helm',
+    color: 'bg-blue-600',
+    category: 'DevOps'
+  },
+  {
+    id: 'typescript',
+    title: 'TypeScript',
+    description: 'Types, interfaces, generics, utility types',
+    icon: FileCode,
+    href: '/typescript',
+    color: 'bg-blue-600',
+    category: 'Web Development'
+  },
+  {
+    id: 'graphql',
+    title: 'GraphQL',
+    description: 'Queries, mutations, subscriptions, schemas',
+    icon: GitBranch,
+    href: '/graphql',
+    color: 'bg-pink-600',
+    category: 'Web Development'
+  },
+  {
+    id: 'tailwind',
+    title: 'Tailwind CSS',
+    description: 'Utility classes, responsive, flexbox, grid',
+    icon: Palette,
+    href: '/tailwind',
+    color: 'bg-cyan-500',
+    category: 'Web Development'
+  },
+  {
+    id: 'sass',
+    title: 'SASS/SCSS',
+    description: 'Variables, mixins, nesting, functions',
+    icon: Palette,
+    href: '/sass',
+    color: 'bg-pink-500',
+    category: 'Web Development'
+  },
+  {
+    id: 'websocket',
+    title: 'WebSocket',
+    description: 'Real-time, events, Socket.IO, protocols',
+    icon: Wifi,
+    href: '/websocket',
+    color: 'bg-green-600',
+    category: 'Web Development'
+  },
+  {
+    id: 'jwt',
+    title: 'JWT',
+    description: 'Token structure, signing, verification',
+    icon: Shield,
+    href: '/jwt',
+    color: 'bg-purple-600',
+    category: 'Security'
+  },
+  {
+    id: 'oauth',
+    title: 'OAuth 2.0',
+    description: 'Flows, PKCE, tokens, OpenID Connect',
+    icon: Shield,
+    href: '/oauth',
+    color: 'bg-green-600',
+    category: 'Security'
+  },
+  {
+    id: 'owasp',
+    title: 'OWASP Top 10',
+    description: 'Injection, XSS, CSRF, security headers',
+    icon: Shield,
+    href: '/owasp',
+    color: 'bg-red-600',
+    category: 'Security'
   }
 ]
 
@@ -334,5 +496,6 @@ export const categories = [
   'Gorsellestirme',
   'DevOps',
   'Cloud',
-  'Web Development'
+  'Web Development',
+  'Security'
 ]

@@ -1327,5 +1327,671 @@ export const quizData: Record<string, QuizQuestion[]> = {
       correct: 1,
       explanation: 'token.is_stop stop word olup olmadığını kontrol eder.'
     }
+  ],
+  huggingface: [
+    {
+      id: 'hf1',
+      question: 'Hugging Face\'de hızlı inference için hangi API kullanılır?',
+      options: ['model.infer()', 'pipeline()', 'model.predict()', 'AutoModel.run()'],
+      correct: 1,
+      explanation: 'pipeline() hızlı ve kolay inference sağlar.'
+    },
+    {
+      id: 'hf2',
+      question: 'Tokenizer yüklemek için hangi sınıf kullanılır?',
+      options: ['Tokenizer', 'AutoTokenizer', 'BertTokenizer', 'TokenizerLoader'],
+      correct: 1,
+      explanation: 'AutoTokenizer otomatik olarak doğru tokenizer\'ı yükler.'
+    },
+    {
+      id: 'hf3',
+      question: 'Fine-tuning için hangi sınıf kullanılır?',
+      options: ['FineTuner', 'Trainer', 'ModelTrainer', 'AutoTrain'],
+      correct: 1,
+      explanation: 'Trainer sınıfı fine-tuning için kullanılır.'
+    },
+    {
+      id: 'hf4',
+      question: 'Dataset yüklemek için hangi fonksiyon kullanılır?',
+      options: ['get_dataset()', 'load_dataset()', 'Dataset.load()', 'fetch_dataset()'],
+      correct: 1,
+      explanation: 'load_dataset() Hugging Face datasets\'ten veri yükler.'
+    },
+    {
+      id: 'hf5',
+      question: 'Model Hub\'a model yüklemek için hangi metod kullanılır?',
+      options: ['model.upload()', 'model.push_to_hub()', 'model.publish()', 'model.deploy()'],
+      correct: 1,
+      explanation: 'push_to_hub() modeli Hub\'a yükler.'
+    }
+  ],
+  mlflow: [
+    {
+      id: 'ml1',
+      question: 'MLflow\'da experiment başlatmak için hangi fonksiyon kullanılır?',
+      options: ['mlflow.start()', 'mlflow.start_run()', 'mlflow.begin()', 'mlflow.run()'],
+      correct: 1,
+      explanation: 'mlflow.start_run() yeni bir run başlatır.'
+    },
+    {
+      id: 'ml2',
+      question: 'Parametre loglamak için hangi fonksiyon kullanılır?',
+      options: ['mlflow.log_param()', 'mlflow.set_param()', 'mlflow.param()', 'mlflow.add_param()'],
+      correct: 0,
+      explanation: 'mlflow.log_param() parametre kaydeder.'
+    },
+    {
+      id: 'ml3',
+      question: 'Model kaydetmek için hangi fonksiyon kullanılır?',
+      options: ['mlflow.save_model()', 'mlflow.sklearn.log_model()', 'mlflow.store_model()', 'mlflow.export()'],
+      correct: 1,
+      explanation: 'mlflow.sklearn.log_model() sklearn modelini kaydeder.'
+    },
+    {
+      id: 'ml4',
+      question: 'Model Registry\'de stage geçişi için ne kullanılır?',
+      options: ['change_stage()', 'transition_model_version_stage()', 'update_stage()', 'set_stage()'],
+      correct: 1,
+      explanation: 'transition_model_version_stage() stage değiştirir.'
+    },
+    {
+      id: 'ml5',
+      question: 'Otomatik loglama için hangi fonksiyon kullanılır?',
+      options: ['mlflow.auto()', 'mlflow.autolog()', 'mlflow.auto_track()', 'mlflow.enable_logging()'],
+      correct: 1,
+      explanation: 'mlflow.autolog() otomatik loglama yapar.'
+    }
+  ],
+  airflow: [
+    {
+      id: 'af1',
+      question: 'Airflow\'da iş akışı tanımlamak için ne kullanılır?',
+      options: ['Workflow', 'Pipeline', 'DAG', 'Flow'],
+      correct: 2,
+      explanation: 'DAG (Directed Acyclic Graph) iş akışını tanımlar.'
+    },
+    {
+      id: 'af2',
+      question: 'Python fonksiyonu çalıştırmak için hangi operator kullanılır?',
+      options: ['FunctionOperator', 'PythonOperator', 'CallableOperator', 'PyOperator'],
+      correct: 1,
+      explanation: 'PythonOperator Python fonksiyonlarını çalıştırır.'
+    },
+    {
+      id: 'af3',
+      question: 'Task\'lar arası veri paylaşımı için ne kullanılır?',
+      options: ['SharedData', 'XCom', 'TaskData', 'Pipeline'],
+      correct: 1,
+      explanation: 'XCom task\'lar arası veri paylaşımı sağlar.'
+    },
+    {
+      id: 'af4',
+      question: 'Harici bir olayı beklemek için ne kullanılır?',
+      options: ['Waiter', 'Sensor', 'Listener', 'Monitor'],
+      correct: 1,
+      explanation: 'Sensor harici koşulları bekler.'
+    },
+    {
+      id: 'af5',
+      question: 'Koşullu task çalıştırma için hangi operator kullanılır?',
+      options: ['IfOperator', 'BranchPythonOperator', 'ConditionalOperator', 'SwitchOperator'],
+      correct: 1,
+      explanation: 'BranchPythonOperator koşullu dallanma sağlar.'
+    }
+  ],
+  elasticsearch: [
+    {
+      id: 'es1',
+      question: 'Elasticsearch\'te full-text arama için hangi query kullanılır?',
+      options: ['text_query', 'match', 'search', 'find'],
+      correct: 1,
+      explanation: 'match query full-text arama yapar.'
+    },
+    {
+      id: 'es2',
+      question: 'Exact match için hangi query kullanılır?',
+      options: ['exact', 'term', 'match_exact', 'equals'],
+      correct: 1,
+      explanation: 'term query exact match yapar.'
+    },
+    {
+      id: 'es3',
+      question: 'Birden fazla koşulu birleştirmek için ne kullanılır?',
+      options: ['and_query', 'bool', 'combined', 'multi'],
+      correct: 1,
+      explanation: 'bool query must, should, must_not ile koşulları birleştirir.'
+    },
+    {
+      id: 'es4',
+      question: 'Aggregation sonuçlarına nasıl erişilir?',
+      options: ['results.aggs', 'response.aggregations', 'data.groups', 'output.buckets'],
+      correct: 1,
+      explanation: 'response.aggregations aggregation sonuçlarını içerir.'
+    },
+    {
+      id: 'es5',
+      question: 'Index mapping tanımlamak için ne kullanılır?',
+      options: ['schema', 'mappings', 'structure', 'definition'],
+      correct: 1,
+      explanation: 'mappings field tiplerini ve ayarlarını tanımlar.'
+    }
+  ],
+  sparksql: [
+    {
+      id: 'ss1',
+      question: 'SparkSession oluşturmak için hangi metod kullanılır?',
+      options: ['SparkSession.create()', 'SparkSession.builder', 'SparkSession.new()', 'SparkSession.init()'],
+      correct: 1,
+      explanation: 'SparkSession.builder ile session oluşturulur.'
+    },
+    {
+      id: 'ss2',
+      question: 'DataFrame\'i SQL\'de kullanmak için ne yapılır?',
+      options: ['df.toSQL()', 'df.createOrReplaceTempView()', 'df.register()', 'df.asSql()'],
+      correct: 1,
+      explanation: 'createOrReplaceTempView() temporary view oluşturur.'
+    },
+    {
+      id: 'ss3',
+      question: 'UDF tanımlamak için hangi decorator kullanılır?',
+      options: ['@spark_udf', '@udf', '@user_function', '@custom_func'],
+      correct: 1,
+      explanation: '@udf decorator\'ı UDF tanımlar.'
+    },
+    {
+      id: 'ss4',
+      question: 'DataFrame\'i cache\'lemek için hangi metod kullanılır?',
+      options: ['df.store()', 'df.cache()', 'df.save()', 'df.memory()'],
+      correct: 1,
+      explanation: 'cache() DataFrame\'i memory\'de tutar.'
+    },
+    {
+      id: 'ss5',
+      question: 'Partition sayısını azaltmak için ne kullanılır?',
+      options: ['reduce()', 'coalesce()', 'shrink()', 'compact()'],
+      correct: 1,
+      explanation: 'coalesce() partition sayısını azaltır.'
+    }
+  ],
+  azure: [
+    {
+      id: 'az1',
+      question: 'Azure CLI\'da login için hangi komut kullanılır?',
+      options: ['azure login', 'az login', 'az auth', 'azure connect'],
+      correct: 1,
+      explanation: 'az login Azure hesabına bağlanır.'
+    },
+    {
+      id: 'az2',
+      question: 'Resource group oluşturmak için hangi komut kullanılır?',
+      options: ['az rg create', 'az group create', 'az resource new', 'az create group'],
+      correct: 1,
+      explanation: 'az group create resource group oluşturur.'
+    },
+    {
+      id: 'az3',
+      question: 'Blob Storage\'a dosya yüklemek için ne kullanılır?',
+      options: ['az storage upload', 'az blob put', 'az storage blob upload', 'az file upload'],
+      correct: 2,
+      explanation: 'az storage blob upload blob yükler.'
+    },
+    {
+      id: 'az4',
+      question: 'AKS cluster credential\'larını almak için ne kullanılır?',
+      options: ['az aks credentials', 'az aks get-credentials', 'az aks auth', 'az aks login'],
+      correct: 1,
+      explanation: 'az aks get-credentials kubeconfig\'i günceller.'
+    },
+    {
+      id: 'az5',
+      question: 'Function App oluşturmak için hangi komut kullanılır?',
+      options: ['az function create', 'az functionapp create', 'az func new', 'az serverless create'],
+      correct: 1,
+      explanation: 'az functionapp create Function App oluşturur.'
+    }
+  ],
+  gcp: [
+    {
+      id: 'gcp1',
+      question: 'GCP CLI\'da project ayarlamak için ne kullanılır?',
+      options: ['gcloud set project', 'gcloud config set project', 'gcloud project use', 'gcloud use project'],
+      correct: 1,
+      explanation: 'gcloud config set project aktif projeyi ayarlar.'
+    },
+    {
+      id: 'gcp2',
+      question: 'GCS\'ye dosya yüklemek için hangi komut kullanılır?',
+      options: ['gcloud storage cp', 'gsutil cp', 'gcloud cp', 'gcs upload'],
+      correct: 1,
+      explanation: 'gsutil cp Cloud Storage\'a dosya kopyalar.'
+    },
+    {
+      id: 'gcp3',
+      question: 'GKE cluster oluşturmak için ne kullanılır?',
+      options: ['gcloud kubernetes create', 'gcloud container clusters create', 'gcloud gke create', 'gcloud cluster new'],
+      correct: 1,
+      explanation: 'gcloud container clusters create GKE cluster oluşturur.'
+    },
+    {
+      id: 'gcp4',
+      question: 'Cloud Function deploy etmek için ne kullanılır?',
+      options: ['gcloud function deploy', 'gcloud functions deploy', 'gcloud deploy function', 'gcloud serverless deploy'],
+      correct: 1,
+      explanation: 'gcloud functions deploy function\'ı deploy eder.'
+    },
+    {
+      id: 'gcp5',
+      question: 'BigQuery\'de query çalıştırmak için hangi komut kullanılır?',
+      options: ['bq run', 'bq query', 'bq execute', 'bq sql'],
+      correct: 1,
+      explanation: 'bq query SQL sorgusu çalıştırır.'
+    }
+  ],
+  prometheus: [
+    {
+      id: 'pr1',
+      question: 'Counter metric\'in saniye başına oranını almak için ne kullanılır?',
+      options: ['ratio()', 'rate()', 'per_second()', 'speed()'],
+      correct: 1,
+      explanation: 'rate() counter\'ın saniye başına oranını hesaplar.'
+    },
+    {
+      id: 'pr2',
+      question: 'Label\'a göre toplamak için hangi fonksiyon kullanılır?',
+      options: ['group()', 'sum by', 'total()', 'aggregate()'],
+      correct: 1,
+      explanation: 'sum by label\'a göre toplar.'
+    },
+    {
+      id: 'pr3',
+      question: 'Histogram\'dan percentile hesaplamak için ne kullanılır?',
+      options: ['percentile()', 'histogram_quantile()', 'quantile()', 'histogram_percentile()'],
+      correct: 1,
+      explanation: 'histogram_quantile() histogram\'dan quantile hesaplar.'
+    },
+    {
+      id: 'pr4',
+      question: 'Recording rule tanımlamak için hangi anahtar kelime kullanılır?',
+      options: ['recording', 'record', 'rule', 'metric'],
+      correct: 1,
+      explanation: 'record yeni metric adını tanımlar.'
+    },
+    {
+      id: 'pr5',
+      question: 'Alert tanımlamak için hangi anahtar kelime kullanılır?',
+      options: ['warning', 'alert', 'notify', 'trigger'],
+      correct: 1,
+      explanation: 'alert alert kuralını tanımlar.'
+    }
+  ],
+  grafana: [
+    {
+      id: 'gr1',
+      question: 'Dashboard\'da dinamik değer için ne kullanılır?',
+      options: ['parameters', 'variables', 'inputs', 'filters'],
+      correct: 1,
+      explanation: 'variables dashboard\'da dinamik değerler sağlar.'
+    },
+    {
+      id: 'gr2',
+      question: 'Panel\'i tekrarlamak için hangi özellik kullanılır?',
+      options: ['clone', 'repeat', 'duplicate', 'copy'],
+      correct: 1,
+      explanation: 'repeat variable değerlerine göre panel\'i tekrarlar.'
+    },
+    {
+      id: 'gr3',
+      question: 'Sorgu sonuçlarını dönüştürmek için ne kullanılır?',
+      options: ['converters', 'transformations', 'processors', 'modifiers'],
+      correct: 1,
+      explanation: 'transformations veriyi dönüştürür.'
+    },
+    {
+      id: 'gr4',
+      question: 'Dashboard provisioning için hangi dizin kullanılır?',
+      options: ['/etc/grafana/dashboards', '/etc/grafana/provisioning', '/var/grafana/config', '/grafana/setup'],
+      correct: 1,
+      explanation: '/etc/grafana/provisioning provisioning dosyalarını içerir.'
+    },
+    {
+      id: 'gr5',
+      question: 'Grafana API\'ye erişmek için ne gerekir?',
+      options: ['username/password', 'API key', 'OAuth token', 'certificate'],
+      correct: 1,
+      explanation: 'API key ile Grafana API\'ye erişilir.'
+    }
+  ],
+  helm: [
+    {
+      id: 'hm1',
+      question: 'Helm chart\'ı install etmek için hangi komut kullanılır?',
+      options: ['helm deploy', 'helm install', 'helm apply', 'helm create'],
+      correct: 1,
+      explanation: 'helm install chart\'ı cluster\'a yükler.'
+    },
+    {
+      id: 'hm2',
+      question: 'Values dosyasını belirtmek için hangi flag kullanılır?',
+      options: ['--values', '-f', '--config', '-c'],
+      correct: 1,
+      explanation: '-f veya --values custom values dosyası belirtir.'
+    },
+    {
+      id: 'hm3',
+      question: 'Release\'i güncellemek için hangi komut kullanılır?',
+      options: ['helm update', 'helm upgrade', 'helm refresh', 'helm patch'],
+      correct: 1,
+      explanation: 'helm upgrade release\'i günceller.'
+    },
+    {
+      id: 'hm4',
+      question: 'Template\'leri render etmek için ne kullanılır?',
+      options: ['helm render', 'helm template', 'helm show', 'helm generate'],
+      correct: 1,
+      explanation: 'helm template manifest\'leri render eder.'
+    },
+    {
+      id: 'hm5',
+      question: 'Chart dependencies\'i güncellemek için ne kullanılır?',
+      options: ['helm deps update', 'helm dependency update', 'helm update deps', 'helm refresh deps'],
+      correct: 1,
+      explanation: 'helm dependency update dependencies\'i günceller.'
+    }
+  ],
+  typescript: [
+    {
+      id: 'ts1',
+      question: 'Optional property tanımlamak için hangi sembol kullanılır?',
+      options: ['*', '?', '!', '&'],
+      correct: 1,
+      explanation: '? optional property tanımlar.'
+    },
+    {
+      id: 'ts2',
+      question: 'Tüm property\'leri optional yapan utility type hangisidir?',
+      options: ['Optional<T>', 'Partial<T>', 'Maybe<T>', 'Nullable<T>'],
+      correct: 1,
+      explanation: 'Partial<T> tüm property\'leri optional yapar.'
+    },
+    {
+      id: 'ts3',
+      question: 'Union type tanımlamak için hangi operatör kullanılır?',
+      options: ['&', '|', '+', ','],
+      correct: 1,
+      explanation: '| union type tanımlar.'
+    },
+    {
+      id: 'ts4',
+      question: 'Generic constraint tanımlamak için ne kullanılır?',
+      options: ['implements', 'extends', 'satisfies', 'requires'],
+      correct: 1,
+      explanation: 'extends generic constraint tanımlar.'
+    },
+    {
+      id: 'ts5',
+      question: 'Type guard fonksiyonu tanımlamak için ne kullanılır?',
+      options: ['is', 'as', 'typeof', 'instanceof'],
+      correct: 0,
+      explanation: 'is type predicate tanımlar.'
+    }
+  ],
+  graphql: [
+    {
+      id: 'gq1',
+      question: 'GraphQL\'de veri almak için ne kullanılır?',
+      options: ['fetch', 'query', 'get', 'read'],
+      correct: 1,
+      explanation: 'query veri okumak için kullanılır.'
+    },
+    {
+      id: 'gq2',
+      question: 'Veri değiştirmek için ne kullanılır?',
+      options: ['update', 'mutation', 'change', 'modify'],
+      correct: 1,
+      explanation: 'mutation veri değiştirmek için kullanılır.'
+    },
+    {
+      id: 'gq3',
+      question: 'Real-time veri için ne kullanılır?',
+      options: ['stream', 'subscription', 'websocket', 'push'],
+      correct: 1,
+      explanation: 'subscription real-time veri sağlar.'
+    },
+    {
+      id: 'gq4',
+      question: 'Tekrar eden field\'ları tanımlamak için ne kullanılır?',
+      options: ['template', 'fragment', 'partial', 'mixin'],
+      correct: 1,
+      explanation: 'fragment tekrar eden field\'ları tanımlar.'
+    },
+    {
+      id: 'gq5',
+      question: 'Koşullu field için hangi directive kullanılır?',
+      options: ['@if', '@include', '@when', '@show'],
+      correct: 1,
+      explanation: '@include koşullu field içerir.'
+    }
+  ],
+  tailwind: [
+    {
+      id: 'tw1',
+      question: 'Responsive tasarım için hangi prefix kullanılır?',
+      options: ['@media', 'sm:', 'responsive-', 'bp-'],
+      correct: 1,
+      explanation: 'sm:, md:, lg: gibi prefix\'ler responsive tasarım sağlar.'
+    },
+    {
+      id: 'tw2',
+      question: 'Hover durumu için hangi prefix kullanılır?',
+      options: [':hover', 'hover:', 'on-hover-', 'h:'],
+      correct: 1,
+      explanation: 'hover: prefix\'i hover durumunu tanımlar.'
+    },
+    {
+      id: 'tw3',
+      question: 'Flexbox container için hangi class kullanılır?',
+      options: ['flexbox', 'flex', 'display-flex', 'flex-container'],
+      correct: 1,
+      explanation: 'flex class\'ı flexbox container oluşturur.'
+    },
+    {
+      id: 'tw4',
+      question: 'Dark mode için hangi prefix kullanılır?',
+      options: ['night:', 'dark:', 'theme-dark:', 'mode-dark:'],
+      correct: 1,
+      explanation: 'dark: prefix\'i dark mode stillerini tanımlar.'
+    },
+    {
+      id: 'tw5',
+      question: 'Padding için hangi class prefix kullanılır?',
+      options: ['padding-', 'pad-', 'p-', 'pd-'],
+      correct: 2,
+      explanation: 'p- padding class\'larının prefix\'idir.'
+    }
+  ],
+  sass: [
+    {
+      id: 'sa1',
+      question: 'SASS\'ta variable tanımlamak için hangi sembol kullanılır?',
+      options: ['@', '$', '#', '&'],
+      correct: 1,
+      explanation: '$ ile variable tanımlanır.'
+    },
+    {
+      id: 'sa2',
+      question: 'Mixin tanımlamak için hangi keyword kullanılır?',
+      options: ['@function', '@mixin', '@define', '@macro'],
+      correct: 1,
+      explanation: '@mixin ile mixin tanımlanır.'
+    },
+    {
+      id: 'sa3',
+      question: 'Mixin kullanmak için hangi keyword kullanılır?',
+      options: ['@use', '@include', '@import', '@apply'],
+      correct: 1,
+      explanation: '@include ile mixin kullanılır.'
+    },
+    {
+      id: 'sa4',
+      question: 'Parent selector\'a referans için hangi sembol kullanılır?',
+      options: ['^', '&', '@', '*'],
+      correct: 1,
+      explanation: '& parent selector\'a referans verir.'
+    },
+    {
+      id: 'sa5',
+      question: 'Partial dosya import etmek için hangi keyword kullanılır?',
+      options: ['@require', '@use', '@load', '@get'],
+      correct: 1,
+      explanation: '@use modern SASS\'ta partial import eder.'
+    }
+  ],
+  websocket: [
+    {
+      id: 'ws1',
+      question: 'WebSocket bağlantısı kurmak için hangi constructor kullanılır?',
+      options: ['Socket()', 'WebSocket()', 'Connection()', 'WS()'],
+      correct: 1,
+      explanation: 'new WebSocket(url) bağlantı oluşturur.'
+    },
+    {
+      id: 'ws2',
+      question: 'Mesaj almak için hangi event listener kullanılır?',
+      options: ['onreceive', 'onmessage', 'ondata', 'onincoming'],
+      correct: 1,
+      explanation: 'onmessage gelen mesajları dinler.'
+    },
+    {
+      id: 'ws3',
+      question: 'Bağlantı durumunu kontrol eden property hangisidir?',
+      options: ['state', 'status', 'readyState', 'connectionState'],
+      correct: 2,
+      explanation: 'readyState bağlantı durumunu gösterir.'
+    },
+    {
+      id: 'ws4',
+      question: 'Socket.IO\'da odaya katılmak için ne kullanılır?',
+      options: ['socket.enter()', 'socket.join()', 'socket.room()', 'socket.connect()'],
+      correct: 1,
+      explanation: 'socket.join() odaya katılır.'
+    },
+    {
+      id: 'ws5',
+      question: 'Normal kapatma için hangi kod kullanılır?',
+      options: ['1000', '1001', '1002', '1003'],
+      correct: 0,
+      explanation: '1000 normal closure kodudur.'
+    }
+  ],
+  jwt: [
+    {
+      id: 'jw1',
+      question: 'JWT kaç bölümden oluşur?',
+      options: ['2', '3', '4', '5'],
+      correct: 1,
+      explanation: 'JWT header, payload ve signature olmak üzere 3 bölümden oluşur.'
+    },
+    {
+      id: 'jw2',
+      question: 'Token\'ın geçerlilik süresini belirten claim hangisidir?',
+      options: ['ttl', 'exp', 'valid', 'timeout'],
+      correct: 1,
+      explanation: 'exp (expiration) claim\'i süreyi belirler.'
+    },
+    {
+      id: 'jw3',
+      question: 'Token\'ı imzalamak için hangi metod kullanılır?',
+      options: ['jwt.create()', 'jwt.sign()', 'jwt.encode()', 'jwt.generate()'],
+      correct: 1,
+      explanation: 'jwt.sign() token\'ı imzalar.'
+    },
+    {
+      id: 'jw4',
+      question: 'Token\'ı doğrulamak için hangi metod kullanılır?',
+      options: ['jwt.check()', 'jwt.verify()', 'jwt.validate()', 'jwt.decode()'],
+      correct: 1,
+      explanation: 'jwt.verify() token\'ı doğrular.'
+    },
+    {
+      id: 'jw5',
+      question: 'Asymmetric signing için hangi algoritma kullanılır?',
+      options: ['HS256', 'RS256', 'MD5', 'SHA256'],
+      correct: 1,
+      explanation: 'RS256 RSA ile asymmetric signing yapar.'
+    }
+  ],
+  oauth: [
+    {
+      id: 'oa1',
+      question: 'Web uygulamaları için önerilen OAuth flow hangisidir?',
+      options: ['Implicit', 'Authorization Code', 'Client Credentials', 'Password'],
+      correct: 1,
+      explanation: 'Authorization Code flow en güvenli seçenektir.'
+    },
+    {
+      id: 'oa2',
+      question: 'SPA\'lar için Authorization Code ile ne kullanılmalıdır?',
+      options: ['Client Secret', 'PKCE', 'API Key', 'Certificate'],
+      correct: 1,
+      explanation: 'PKCE public client\'lar için güvenlik sağlar.'
+    },
+    {
+      id: 'oa3',
+      question: 'Access token almak için hangi endpoint kullanılır?',
+      options: ['/authorize', '/token', '/access', '/oauth'],
+      correct: 1,
+      explanation: '/token endpoint\'i access token döner.'
+    },
+    {
+      id: 'oa4',
+      question: 'Token yenilemek için hangi grant type kullanılır?',
+      options: ['renew_token', 'refresh_token', 'new_token', 'update_token'],
+      correct: 1,
+      explanation: 'refresh_token grant type\'ı token yeniler.'
+    },
+    {
+      id: 'oa5',
+      question: 'OpenID Connect\'in OAuth 2.0\'a eklediği nedir?',
+      options: ['Access Token', 'ID Token', 'API Key', 'Session'],
+      correct: 1,
+      explanation: 'ID Token kullanıcı kimlik bilgilerini içerir.'
+    }
+  ],
+  owasp: [
+    {
+      id: 'ow1',
+      question: 'SQL Injection\'ı önlemek için ne kullanılmalıdır?',
+      options: ['String concatenation', 'Parametrized queries', 'Escaping', 'Encryption'],
+      correct: 1,
+      explanation: 'Parametrized queries SQL Injection\'ı önler.'
+    },
+    {
+      id: 'ow2',
+      question: 'XSS\'i önlemek için ne yapılmalıdır?',
+      options: ['Input encryption', 'Output encoding', 'Input hashing', 'SSL kullanma'],
+      correct: 1,
+      explanation: 'Output encoding XSS\'i önler.'
+    },
+    {
+      id: 'ow3',
+      question: 'Password saklamak için ne kullanılmalıdır?',
+      options: ['MD5', 'SHA256', 'bcrypt', 'Base64'],
+      correct: 2,
+      explanation: 'bcrypt güvenli password hashing sağlar.'
+    },
+    {
+      id: 'ow4',
+      question: 'CSRF\'i önlemek için ne kullanılır?',
+      options: ['API Key', 'CSRF Token', 'Session ID', 'Cookie'],
+      correct: 1,
+      explanation: 'CSRF Token cross-site request forgery\'i önler.'
+    },
+    {
+      id: 'ow5',
+      question: 'Security header\'ları eklemek için hangi middleware kullanılır?',
+      options: ['cors', 'helmet', 'express-security', 'secure-headers'],
+      correct: 1,
+      explanation: 'helmet security header\'larını ekler.'
+    }
   ]
 }

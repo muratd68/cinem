@@ -8,18 +8,20 @@ Data Scientists ve Developers için kapsamlı hızlı referans (cheat sheet) sit
 
 ## Özellikler
 
-### 📚 15 Detaylı Cheat Sheet
+### 📚 52 Detaylı Cheat Sheet
 
 | Kategori | Cheat Sheets |
 |----------|--------------|
 | **Programlama** | Python, Regex |
-| **Data Science** | Pandas, NumPy, İstatistik |
-| **Machine Learning** | Scikit-learn |
-| **Deep Learning** | TensorFlow, PyTorch |
-| **Veritabanı** | SQL |
+| **Data Science** | Pandas, NumPy, İstatistik, PySpark, Airflow, Spark SQL |
+| **Machine Learning** | Scikit-learn, MLflow |
+| **Deep Learning** | TensorFlow, PyTorch, Keras, Hugging Face |
+| **Veritabanı** | SQL, MongoDB, PostgreSQL, Redis, Elasticsearch |
 | **Görselleştirme** | Matplotlib |
-| **DevOps** | Git, Linux, Docker |
-| **Web Development** | React, Django |
+| **DevOps** | Git, Linux, Docker, Kubernetes, Terraform, Ansible, Nginx, GitHub Actions, Prometheus, Grafana, Helm |
+| **Cloud** | AWS, Azure, GCP |
+| **Web Development** | React, Django, JavaScript, CSS, Node.js, Vue.js, Next.js, TypeScript, GraphQL, Tailwind, SASS, WebSocket |
+| **Security** | JWT, OAuth 2.0, OWASP Top 10 |
 
 ### 🎯 Temel Özellikler
 
